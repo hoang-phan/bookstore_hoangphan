@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
 gem "jruby-openssl", :platforms => :jruby
-gem "sqlite3"
+gem "pg"
 gem 'bootstrap-sass'
 gem 'sprockets'
 
@@ -33,11 +33,11 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'minitest'
   gem "appraisal", "~> 1.0"
+  gem 'simplecov', :require => false
 end
 
 group :production do
   gem 'rails_12factor', '0.0.2'
-  gem 'pg', '0.15.1'
 end
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
