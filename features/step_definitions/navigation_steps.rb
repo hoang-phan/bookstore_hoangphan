@@ -1,7 +1,7 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
 Given /^I have a user$/ do
-  FactoryGirl.create(:user)
+  @user = FactoryGirl.create(:user)
 end
 
 Given /^on page of the first user$/ do
@@ -16,8 +16,22 @@ When /^I click button "(.*?)"$/ do |button|
   click_button(button)
 end
 
+When /^I click link "(.*?)"$/ do |button|
+  click_link(button)
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |label, value|
   fill_in label, with: value
+end
+
+When /^I sign in$/ do
+  fill_in "Email", with: @user.email
+  fill_in "Password", with: @user.password
+  click_button "Login"
+end
+
+Then /^I should see my email$/ do
+  page.should have_content(@user.email)
 end
 
 Then /^I should see div "([^\"]*)"$/ do |text|
