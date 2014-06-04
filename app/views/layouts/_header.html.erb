@@ -4,7 +4,11 @@
       <div class="container">
         <ul class="nav pull-right">
           <li><%= link_to "Home", "/" %></li>
-          <li><%= link_to "Login", "#" %></li>
+          <% unless signed_in? %>
+          <li><%= link_to "Login", signin_path %></li>
+          <% else %>
+          <li><%= link_to "Logout", signout_path, method: "delete" %></li>
+          <% end %>
           <li><%= link_to "Search", "#" %></li>
         </ul>
       </div>

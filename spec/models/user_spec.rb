@@ -16,6 +16,7 @@ describe User do
   it { should respond_to(:birthday) }
   it { should respond_to(:created_at) }
   it { should respond_to(:activated) }
+  it { should respond_to(:remember_token) }
 
   it { should be_valid }
   it { should_not be_activated }
@@ -90,6 +91,11 @@ describe User do
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
     end
+  end
+
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
   end
 end
 

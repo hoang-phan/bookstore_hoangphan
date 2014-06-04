@@ -1,5 +1,13 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
+Given /^I have a user$/ do
+  FactoryGirl.create(:user)
+end
+
+Given /^on page of the first user$/ do
+  visit(user_path(id: User.first.id))
+end
+
 Given /^I am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
@@ -10,6 +18,15 @@ end
 
 When /^I fill in "(.*?)" with "(.*?)"$/ do |label, value|
   fill_in label, with: value
+end
+
+Then /^I should see div "([^\"]*)"$/ do |text|
+  page.should have_selector("div.#{text}")
+end
+
+Then /^I should see content of the first user$/ do
+  user = User.first
+  page.should have_content(user.email)
 end
 
 Then /^I should see content "([^\"]*)"$/ do |text|
@@ -27,3 +44,10 @@ end
 Then /^I should see link "([^\"]*)"$/ do |text|
   page.should have_link(text)
 end
+
+Then /^I should receive a confirmation email to "(.*?)"$/ do |email|
+  user = User.new(email: email)
+  mail = UserMailer.welcome_email(user)
+  mail.should have_content("Welcome")
+end
+
