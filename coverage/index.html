@@ -14,7 +14,7 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2014-06-04T17:43:48+07:00">2014-06-04T17:43:48+07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2014-06-04T18:21:52+07:00">2014-06-04T18:21:52+07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.01
+         3.11
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>31</b> files in total.
-    <b>255</b> relevant lines. 
-    <span class="green"><b>255</b> lines covered</span> and
+    <b>265</b> relevant lines. 
+    <span class="green"><b>265</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -63,11 +63,11 @@
       <tr>
         <td class="strong"><a href="#e347e2a3c6c6adcab1206a2fbeebbac4851e727e" class="src_link" title="app/controllers/sessions_controller.rb">app/controllers/sessions_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>16</td>
-        <td>9</td>
-        <td>9</td>
+        <td>21</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>1.7</td>
+        <td>1.8</td>
       </tr>
       
       <tr>
@@ -103,11 +103,11 @@
       <tr>
         <td class="strong"><a href="#eb787a5487637681aa19d2532e1e04806cccc446" class="src_link" title="app/helpers/sessions_helper.rb">app/helpers/sessions_helper.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>21</td>
-        <td>13</td>
-        <td>13</td>
+        <td>28</td>
+        <td>17</td>
+        <td>17</td>
         <td>0</td>
-        <td>8.3</td>
+        <td>7.6</td>
       </tr>
       
       <tr>
@@ -147,7 +147,7 @@
         <td>18</td>
         <td>18</td>
         <td>0</td>
-        <td>7.9</td>
+        <td>8.8</td>
       </tr>
       
       <tr>
@@ -333,11 +333,11 @@
       <tr>
         <td class="strong"><a href="#6f86e69c0123e54fcee49dc43abd1f461cf1ae85" class="src_link" title="spec/requests/authentication_pages_spec.rb">spec/requests/authentication_pages_spec.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>37</td>
-        <td>19</td>
-        <td>19</td>
+        <td>42</td>
+        <td>22</td>
+        <td>22</td>
         <td>0</td>
-        <td>2.3</td>
+        <td>2.5</td>
       </tr>
       
       <tr>
@@ -435,8 +435,8 @@
     <h3>app/controllers/sessions_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>9</b> relevant lines. 
-      <span class="green"><b>9</b> lines covered</span> and
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -474,26 +474,26 @@
           <code class="ruby">  def create</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="6">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="6">
+          <span class="hits">4</span>
           
           <code class="ruby">    user = User.find_by(email: params[:session][:email].downcase)</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="7">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="7">
+          <span class="hits">4</span>
           
           <code class="ruby">    if user &amp;&amp; user.authenticate(params[:session][:password])</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="8">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="8">
+          <span class="hits">3</span>
           
           <code class="ruby">      sign_in user</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="9">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="9">
+          <span class="hits">3</span>
           
           <code class="ruby">      redirect_to user</code>
         </li>
@@ -534,7 +534,37 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="covered" data-hits="1" data-linenumber="16">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def destroy</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    sign_out</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="18">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    redirect_to root_url</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="20">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">end</code>
@@ -636,8 +666,8 @@
           <code class="ruby">  def show</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="7">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="5" data-linenumber="7">
+          <span class="hits">5</span>
           
           <code class="ruby">    @user = User.find(params[:id])</code>
         </li>
@@ -795,8 +825,8 @@
     <h3>app/helpers/sessions_helper.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>17</b> relevant lines. 
+      <span class="green"><b>17</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -816,26 +846,26 @@
           <code class="ruby">  def sign_in(user)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="3">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="3">
+          <span class="hits">3</span>
           
           <code class="ruby">    remember_token = User.new_remember_token</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="4">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="4">
+          <span class="hits">3</span>
           
           <code class="ruby">    cookies.permanent[:remember_token] = remember_token</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="5">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="5">
+          <span class="hits">3</span>
           
           <code class="ruby">    user.update_attribute(:remember_token, User.digest(remember_token))</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="6">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="6">
+          <span class="hits">3</span>
           
           <code class="ruby">    self.current_user = user</code>
         </li>
@@ -858,8 +888,8 @@
           <code class="ruby">  def current_user=(user)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="10">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="4" data-linenumber="10">
+          <span class="hits">4</span>
           
           <code class="ruby">    @current_user = user</code>
         </li>
@@ -882,14 +912,14 @@
           <code class="ruby">  def current_user</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="14">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="35" data-linenumber="14">
+          <span class="hits">35</span>
           
           <code class="ruby">    remember_token = User.digest(cookies[:remember_token])</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="15">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="35" data-linenumber="15">
+          <span class="hits">35</span>
           
           <code class="ruby">    @current_user ||= User.find_by(remember_token: remember_token)</code>
         </li>
@@ -912,8 +942,8 @@
           <code class="ruby">  def signed_in?</code>
         </li>
       
-        <li class="covered" data-hits="31" data-linenumber="19">
-          <span class="hits">31</span>
+        <li class="covered" data-hits="34" data-linenumber="19">
+          <span class="hits">34</span>
           
           <code class="ruby">    !current_user.nil?</code>
         </li>
@@ -925,6 +955,48 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="22">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def sign_out</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="23">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    current_user.update_attribute(:remember_token,</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">                                  User.digest(User.new_remember_token))</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="25">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    cookies.delete(:remember_token)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="26">
+          <span class="hits">1</span>
+          
+          <code class="ruby">    self.current_user = nil</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby">end</code>
@@ -1086,8 +1158,8 @@
           <code class="ruby">class User &lt; ActiveRecord::Base</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="2">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="21" data-linenumber="2">
+          <span class="hits">21</span>
           
           <code class="ruby">  before_save { self.email = email.downcase }</code>
         </li>
@@ -1158,8 +1230,8 @@
           <code class="ruby">  def birthday_is_date?</code>
         </li>
       
-        <li class="covered" data-hits="35" data-linenumber="14">
-          <span class="hits">35</span>
+        <li class="covered" data-hits="36" data-linenumber="14">
+          <span class="hits">36</span>
           
           <code class="ruby">    errors.add(:birthday, &quot;is invalid&quot;) unless Chronic.parse(birthday)</code>
         </li>
@@ -1182,8 +1254,8 @@
           <code class="ruby">  def User.new_remember_token</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="18">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="19" data-linenumber="18">
+          <span class="hits">19</span>
           
           <code class="ruby">    SecureRandom.urlsafe_base64</code>
         </li>
@@ -1206,8 +1278,8 @@
           <code class="ruby">  def User.digest(token)</code>
         </li>
       
-        <li class="covered" data-hits="47" data-linenumber="22">
-          <span class="hits">47</span>
+        <li class="covered" data-hits="54" data-linenumber="22">
+          <span class="hits">54</span>
           
           <code class="ruby">    Digest::SHA1.hexdigest(token.to_s)</code>
         </li>
@@ -1242,8 +1314,8 @@
           <code class="ruby">    def create_remember_token</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="28">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="15" data-linenumber="28">
+          <span class="hits">15</span>
           
           <code class="ruby">      self.remember_token = User.digest(User.new_remember_token)</code>
         </li>
@@ -3771,8 +3843,8 @@
     <h3>spec/requests/authentication_pages_spec.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>19</b> relevant lines. 
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>22</b> relevant lines. 
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -3804,8 +3876,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="5">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="5">
+          <span class="hits">8</span>
           
           <code class="ruby">  subject { page }</code>
         </li>
@@ -3828,8 +3900,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="9">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="8" data-linenumber="9">
+          <span class="hits">8</span>
           
           <code class="ruby">    before { visit signin_path }</code>
         </li>
@@ -3912,8 +3984,8 @@
           <code class="ruby">    describe &quot;valid login&quot; do</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="23">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="4" data-linenumber="23">
+          <span class="hits">4</span>
           
           <code class="ruby">      let(:user) { FactoryGirl.create(:user) }</code>
         </li>
@@ -3930,20 +4002,20 @@
           <code class="ruby">      before do</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="26">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="26">
+          <span class="hits">3</span>
           
           <code class="ruby">        fill_in &quot;Email&quot;,    with: user.email.upcase</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="27">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="27">
+          <span class="hits">3</span>
           
           <code class="ruby">        fill_in &quot;Password&quot;, with: user.password</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="28">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="3" data-linenumber="28">
+          <span class="hits">3</span>
           
           <code class="ruby">        click_button &quot;Login&quot;</code>
         </li>
@@ -3978,25 +4050,55 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="covered" data-hits="1" data-linenumber="34">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">      describe &quot;followed by signout&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="35">
+        <li class="covered" data-hits="2" data-linenumber="35">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        before { click_link &quot;Logout&quot; }</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="36">
+          <span class="hits">2</span>
+          
+          <code class="ruby">        it { should have_link(&#39;Login&#39;) }</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="37">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="38">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="39">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="40">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby">end</code>
