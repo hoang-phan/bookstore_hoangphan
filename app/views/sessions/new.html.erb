@@ -1,3 +1,4 @@
+
 <div id="content1">
   <div class="wrap">
     <div class="hero-unit">
@@ -8,9 +9,14 @@
 
         <%= f.label :password %>
         <%= f.password_field :password, placeholder: "Enter your password" %>
-
+        <% if @captcha %>
+          <p>You have failed more than 3 login attempts</p>
+          <%= recaptcha_tags %>
+        <% end %>
         <%= f.submit "Login", class: "btn btn-large btn-primary" %>
+
       <% end %>
     </div>
   </div>
 </div>
+

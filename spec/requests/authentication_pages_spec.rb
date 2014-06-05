@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "AuthenticationPages" do
 
   subject { page }
+  let(:user) { FactoryGirl.create(:user) }
 
   describe "sign in page" do
 
@@ -17,10 +18,21 @@ describe "AuthenticationPages" do
 
       it { should have_selector('div.alert.alert-error') }
 
+      describe "3 fails login" do
+        before do
+          3.times do
+            visit signin_path
+            fill_in "Email", with: user.email.upcase
+            click_button "Login"
+          end
+        end
+
+        it { should have_content("You have failed more than 3 login attempts")}
+      end
+
     end
 
     describe "valid login" do
-      let(:user) { FactoryGirl.create(:user) }
 
       before do
         fill_in "Email",    with: user.email.upcase

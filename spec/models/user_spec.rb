@@ -18,6 +18,8 @@ describe User do
   it { should respond_to(:activated) }
   it { should respond_to(:activation_token) }
   it { should respond_to(:remember_token) }
+  it { should respond_to(:login_count) }
+  it { should respond_to(:last_login_at) }
 
   it { should be_valid }
   it { should_not be_activated }
