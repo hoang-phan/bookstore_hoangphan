@@ -8,5 +8,6 @@ FactoryGirl.define do
     password_confirmation "password"
     birthday "2014-06-04"
     phone "01239330268"
+    activation_token "335577"
   end
 end
