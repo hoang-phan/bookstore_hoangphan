@@ -28,4 +28,3 @@ Feature:  Sign up page
         And I fill in "Confirmation" with "123456"
         And I click button "Sign up"
         Then I should not see content "error"
-        And I should receive a confirmation email to "hoangpahn@ea.com"

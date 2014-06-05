@@ -16,6 +16,7 @@ describe User do
   it { should respond_to(:birthday) }
   it { should respond_to(:created_at) }
   it { should respond_to(:activated) }
+  it { should respond_to(:activation_token) }
   it { should respond_to(:remember_token) }
 
   it { should be_valid }
