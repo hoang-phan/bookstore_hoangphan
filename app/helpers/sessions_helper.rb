@@ -38,11 +38,8 @@ module SessionsHelper
     login_count >= 3
   end
 
-  def verify_captcha?
-    verify_recaptcha(:model => @post, :message => "Oh! It's error with reCAPTCHA!") && @post.save
-  end
-
   def reset_login_count(user)
     user.update_attribute(:login_count, 0)
   end
+
 end

@@ -28,6 +28,8 @@ describe "AuthenticationPages" do
         end
 
         it { should have_content("You have failed more than 3 login attempts")}
+        it { should_not have_link("Logout") }
+
       end
 
     end
