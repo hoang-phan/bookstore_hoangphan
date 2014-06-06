@@ -22,9 +22,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
 gem "jruby-openssl", :platforms => :jruby
-gem "pg"
+gem "pg", '0.15.1'
 gem 'bootstrap-sass'
 gem 'sprockets'
+gem "recaptcha"
 
 group :development, :test do
   gem 'factory_girl_rails'
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'minitest'
   gem "appraisal", "~> 1.0"
   gem 'simplecov', :require => false
+  gem 'selenium-webdriver'
 end
 
 group :production do

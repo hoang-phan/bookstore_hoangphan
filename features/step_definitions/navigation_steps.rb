@@ -61,7 +61,7 @@ end
 
 Then /^I should receive a confirmation email to "(.*?)"$/ do |email|
   user = User.new(email: email)
-  mail = UserMailer.welcome_email(user)
+  mail = UserMailer.send_activation(user)
   mail.should have_content("Welcome")
 end
 

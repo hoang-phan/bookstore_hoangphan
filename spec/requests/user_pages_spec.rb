@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe "UserPages" do
 
-  let(:user) { User.new(full_name: "Example User", email: "ea@ea.ex", password:"123456",
-                        password_confirmation:"123456", birthday:"22/01/1992", phone:"012322312312") }
+  let(:user) { User.new(full_name: "Example User", email: "ea@ea.exa", password:"123456",
+                        password_confirmation:"123456", birthday:"22/01/1992") }
 
   before { visit signup_path }
 

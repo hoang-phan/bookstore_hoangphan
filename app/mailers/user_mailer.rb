@@ -1,9 +1,8 @@
 class UserMailer < ActionMailer::Base
   default from: "hoangphanbk10@gmail.com"
 
-  def welcome_email(user)
+  def send_activation(user)
     @user = user
-    @url = "http://www.google.com"
-    mail(:to => user.email, :subject => "Welcome")
+    mail(:to => "hoang.phan@eastagile.com", :subject => "Account activation")
   end
 end
