@@ -5,7 +5,11 @@
       <h1>We are the largest bookstore.</h1>
       <p>You are looking for your sweet but rare books from all over the world but you don't have time? </p>
       <p>You want a private list of books suggested everyday? </p>
-      <p><%= link_to "Sign up now", signup_path, class: "btn btn-large btn-primary" %></p>
+      <% unless user_signed_in? %>
+      <p><%= link_to "Sign up now", new_user_registration_path, class: "btn btn-large btn-primary" %></p>
+      <% else %>
+      <h1>Rock with us members</h1>
+      <% end %>
     </div>
   </div>
 </div>

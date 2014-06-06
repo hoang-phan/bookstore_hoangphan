@@ -2,6 +2,7 @@ require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "pat
 
 Given /^I have a user$/ do
   @user = FactoryGirl.create(:user)
+  @user.confirm!
 end
 
 Given /^on page of the first user$/ do
@@ -27,7 +28,7 @@ end
 When /^I sign in$/ do
   fill_in "Email", with: @user.email
   fill_in "Password", with: @user.password
-  click_button "Login"
+  click_button "Sign in"
 end
 
 Then /^I should see my email$/ do
