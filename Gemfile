@@ -29,7 +29,7 @@ gem "recaptcha"
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '2.13.1'
+  gem "rspec-rails", '~> 2.14.0.rc1'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'minitest'

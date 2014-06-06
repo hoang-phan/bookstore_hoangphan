@@ -80,4 +80,43 @@ describe "UserPages" do
 
   end
 
+  describe "edit user" do
+
+    let(:user1) { FactoryGirl.create(:user) }
+
+    before do
+      sign_in user1
+      visit edit_user_path(user1)
+    end
+
+    describe "page" do
+      it { should have_content("Update your profile") }
+      it { should have_title("Edit user") }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+
+      it { should have_content('error') }
+    end
+
+    describe "with valid information" do
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        user1.full_name = new_name
+        user1.email = new_email
+        sign_up user1
+        click_button "Save changes"
+      end
+
+      it { should have_content(new_name) }
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Logout') }
+
+      specify { expect(user1.reload.full_name).to  eq new_name }
+      specify { expect(user1.reload.email).to eq new_email }
+    end
+  end
+
 end
