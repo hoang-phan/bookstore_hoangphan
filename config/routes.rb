@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :sessions
-  resources :activations
+  resources :activations, only: [:show]
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

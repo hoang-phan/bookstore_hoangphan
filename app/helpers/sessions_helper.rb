@@ -25,4 +25,21 @@ module SessionsHelper
     cookies.delete(:remember_token)
     self.current_user = nil
   end
+
+  def exceed_max_logins?(user)
+    return false unless user
+
+    # var login_count = SELECT login_count FROM users WHERE id = user.id
+    # login_count++
+    login_count = User.select("login_count").find(user.id).login_count + 1
+
+    user.update_attribute(:login_count, user.login_count + 1)
+
+    login_count >= 3
+  end
+
+  def reset_login_count(user)
+    user.update_attribute(:login_count, 0)
+  end
+
 end

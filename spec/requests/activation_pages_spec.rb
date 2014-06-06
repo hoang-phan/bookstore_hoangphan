@@ -9,6 +9,6 @@ describe "ActivationPages" do
     subject { page }
     before { visit activation_url(user.activation_token) }
 
-    it { should have_selector("div.alert.alert-success") }
+    it { should have_selector("div.alert.alert-success", text: "Your account is now activated.") }
   end
 end
