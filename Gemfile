@@ -37,7 +37,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'minitest'
   gem "appraisal", "~> 1.0"
-  gem 'simplecov', :require => false
+  gem 'simplecov', '~> 0.7.1', :require => false
   gem 'selenium-webdriver'
 end
 
