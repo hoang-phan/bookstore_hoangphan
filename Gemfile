@@ -28,7 +28,6 @@ gem 'sprockets'
 gem "recaptcha"
 gem 'devise'
 gem "devise-async"
-gem "byebug"
 
 group :development, :test do
   gem 'factory_girl_rails'
