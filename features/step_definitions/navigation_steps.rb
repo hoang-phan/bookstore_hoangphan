@@ -9,6 +9,14 @@ Given /^I have a book$/ do
   @book = FactoryGirl.create(:book)
 end
 
+Given /^I have a category$/ do
+  @category = FactoryGirl.create(:category)
+end
+
+Given /^the book belongs to the category$/ do
+  @category.book_category_items.create!(book_id: @book.id)
+end
+
 Given /^on page of the first user$/ do
   visit(user_path(id: User.first.id))
 end
@@ -19,6 +27,10 @@ end
 
 Given /^I visit the book page$/ do
   visit "books/#{ @book.id }"
+end
+
+Given /^I visit the category page$/ do
+  visit "categories/#{ @category.id }"
 end
 
 When /^I click button "(.*?)"$/ do |button|
@@ -63,6 +75,10 @@ end
 
 Then /^I should see div "([^\"]*)"$/ do |text|
   page.should have_selector("div.#{text}")
+end
+
+Then /^I should see content of the book$/ do
+  page.should have_content(@book.title)
 end
 
 Then /^I should see content of the first user$/ do

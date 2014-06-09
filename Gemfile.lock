@@ -36,9 +36,6 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
-    byebug (3.1.2)
-      columnize (~> 0.8)
-      debugger-linecache (~> 1.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -55,7 +52,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    columnize (0.8.9)
     cucumber (1.3.15)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -69,7 +65,6 @@ GEM
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
     database_cleaner (1.3.0)
-    debugger-linecache (1.2.0)
     delayed_job (4.0.1)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -215,7 +210,6 @@ DEPENDENCIES
   appraisal (~> 1.0)
   bcrypt
   bootstrap-sass
-  byebug
   chronic
   coffee-rails (~> 4.0.0)
   cucumber-rails

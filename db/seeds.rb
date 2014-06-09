@@ -27,12 +27,21 @@ end
   unit_price = rand(10) / 3
   photo = "photo#{ n }.png"
   published_date = rand(2.months).ago
-  book = Book.create(title: title,
+  Book.create(title: title,
                 description: description,
                 author_name: author_name,
                 publisher_name: publisher_name,
                 unit_price: unit_price,
                 published_date: published_date,
                 photo: photo)
+end
+
+10.times do |n|
+  name = "category#{ n }"
+  sort_order = n
+  category = Category.create(name: name,
+                  sort_order: sort_order)
+  category.book_category_items.create!(book_id: n)
+  category.book_category_items.create!(book_id: 10 + n)
 end
 

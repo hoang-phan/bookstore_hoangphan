@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140609013938) do
+ActiveRecord::Schema.define(version: 20140609090724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_category_items", force: true do |t|
+    t.integer  "book_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "book_category_items", ["book_id", "category_id"], name: "index_book_category_items_on_book_id_and_category_id", unique: true, using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -26,6 +35,13 @@ ActiveRecord::Schema.define(version: 20140609013938) do
     t.string   "photo"
     t.integer  "total_rating_count", default: 0
     t.integer  "total_rating_value", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.integer  "sort_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
