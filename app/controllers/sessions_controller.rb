@@ -1,21 +1,16 @@
-class SessionsController < ApplicationController
+class SessionsController < Devise::SessionsController
   def new
+    super
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      sign_in user
-      redirect_to user
+    email = params[:user][:email]
+    user = User.find_by_email(email)
+    user.update_attribute(:login_count, 0) if user && user.valid_password?(params[:user][:password])
+    if session[:captcha] && !verify_recaptcha
+      redirect_to new_user_session_path
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      super
     end
   end
-
-  def destroy
-    sign_out
-    redirect_to root_url
-  end
-
 end

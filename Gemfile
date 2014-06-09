@@ -22,18 +22,22 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
 gem "jruby-openssl", :platforms => :jruby
-gem "pg"
+gem "pg", '0.15.1'
 gem 'bootstrap-sass'
 gem 'sprockets'
+gem "recaptcha"
+gem 'devise'
+gem "devise-async"
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '2.13.1'
+  gem "rspec-rails", '~> 2.14.0.rc1'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'minitest'
   gem "appraisal", "~> 1.0"
-  gem 'simplecov', :require => false
+  gem 'simplecov', '~> 0.7.1', :require => false
+  gem 'selenium-webdriver'
 end
 
 group :production do

@@ -2,82 +2,111 @@ require 'spec_helper'
 
 describe "UserPages" do
 
-  let(:user) { User.new(full_name: "Example User", email: "ea@ea.ex", password:"123456",
-                        password_confirmation:"123456", birthday:"22/01/1992", phone:"012322312312") }
-
-  before { visit signup_path }
+  let(:non_signed_up_user) { User.new(full_name:"Hoang Phan", email: "hasdw@sad.asd", password: "12345678", birthday: "22/1/1992", phone:"0123012321312") }
+  let(:user) { FactoryGirl.create(:user) }
 
   subject { page }
 
-  describe "sign up" do
-    describe "with invalid information" do
+  describe "signup" do
 
-      describe "blank registration" do
-        it "should not create a new user" do
-          expect { click_button "Sign up" }.not_to change(User, :count)
+    describe "non-signed-in user" do
+      before { visit new_user_registration_path }
+
+      it { should have_title("Sign up") }
+
+      describe "valid sign_up" do
+        before { sign_up non_signed_up_user }
+
+        it "should send a mail" do
+          click_button "Sign up"
+          user.send(:send_confirmation_notification?).should eq true
         end
+
       end
+      describe "invalid sign up" do
 
-      describe "invalid email" do
-
-        it "should not create a new user with blank email" do
-          user.email = " "
-          sign_up user
-
-          expect { click_button "Sign up" }.not_to change(User, :count)
+        describe "blank" do
+          before { click_button "Sign up" }
+          it { should have_content("error") }
         end
 
-        it "should not create a new user with invalid email" do
-
-          addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-                     foo@bar_baz.com foo@bar+baz.com]
-
-          addresses.each do |invalid_address|
-            user.email = invalid_address
-            sign_up user
-
-            expect { click_button "Sign up" }.not_to change(User, :count)
+        describe "invalid email" do
+          before do
+            non_signed_up_user.email = "aaaaa"
+            sign_up non_signed_up_user
+            click_button "Sign up"
           end
+          it { should have_content("error") }
+        end
 
+        describe "invalid password" do
+          before do
+            non_signed_up_user.password = "aaaaa"
+            sign_up non_signed_up_user
+            click_button "Sign up"
+          end
+          it { should have_content("error") }
+        end
+
+        describe "mismatch password" do
+          before do
+            sign_up non_signed_up_user
+            fill_in "Password confirmation", with: "Wrongpass"
+            click_button "Sign up"
+          end
+          it { should have_content("error") }
+        end
+
+        describe "duplicate email" do
+          before do
+            sign_up user
+            click_button "Sign up"
+          end
+          it { should have_content("error") }
         end
 
       end
 
     end
 
-    describe "with valid information" do
+    describe "signed_in user" do
 
-      before { sign_up user }
-
-      it "should create a new user" do
-        expect { click_button "Sign up" }.to change(User, :count).by(1)
+      before do
+        user.confirm!
+        sign_in user
+        visit new_user_registration_path
       end
 
-      it "should send a mail" do
-        expect { click_button "Sign up" }.to change(Delayed::Job, :count).by(1)
-      end
-
-      describe "waiting for activation" do
-
-        before { click_button "Sign up" }
-
-        it { should have_content("Thank you") }
-        it { should have_content(user.email) }
-
-      end
-
+      it { should_not have_title("Sign up") }
     end
 
   end
 
-  describe "show user" do
-    let(:a_user) { FactoryGirl.create(:user) }
+  describe "edit" do
+    before do
+      user.confirm!
+      sign_in user
+      visit edit_user_registration_path
+    end
 
-    before { visit user_path(a_user) }
+    describe "with invalid information" do
+      describe "not have current password" do
+        before do
+          click_button "Update"
+        end
 
-    it { should have_content(a_user.full_name) }
-    it { should have_content(a_user.email) }
+        it { should have_content('error') }
+      end
+    end
 
+    describe "with valid information" do
+      before do
+        fill_in "Current password", with: user.password
+        click_button "Update"
+      end
+
+      it { should_not have_content('error') }
+    end
   end
 
 end

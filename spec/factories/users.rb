@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :user do
-    full_name "Avenger"
-    email "ex@fellow.com"
-    password "password"
-    password_confirmation "password"
-    birthday "2014-06-04"
-    phone "01239330268"
+    full_name "Phan Nhat Hoang"
+    email "someemail@gmail.com"
+    password "12345678"
+    phone "01230213123"
+    birthday "22/01/1992"
   end
 end

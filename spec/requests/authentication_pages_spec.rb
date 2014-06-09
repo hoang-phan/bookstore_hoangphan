@@ -3,40 +3,58 @@ require 'spec_helper'
 describe "AuthenticationPages" do
 
   subject { page }
+  let(:user) { FactoryGirl.create(:user) }
+  before { user.confirm! }
 
-  describe "sign in page" do
+  describe "signin" do
 
-    before { visit signin_path }
+    before { visit new_user_session_path }
 
-    it { should have_content("Email") }
-    it { should have_content("Password") }
-    it { should have_link("Login") }
+    describe "invalid signin" do
 
-    describe "invalid login" do
-      before { click_button "Login" }
-
-      it { should have_selector('div.alert.alert-error') }
-
-    end
-
-    describe "valid login" do
-      let(:user) { FactoryGirl.create(:user) }
-
-      before do
-        fill_in "Email",    with: user.email.upcase
-        fill_in "Password", with: user.password
-        click_button "Login"
+      describe "blank" do
+        before { click_button "Sign in" }
+        #location not changed
+        it { should have_content("Sign in") }
       end
 
-      it { should have_link('Logout',    href: signout_path) }
-      it { should_not have_link('Login', href: signin_path) }
+      describe "invalid combination" do
+        before do
+          user.password = "Wrongpass"
+          sign_in user
+        end
 
-      describe "followed by signout" do
-        before { click_link "Logout" }
-        it { should have_link('Login') }
+        it { should have_content("Sign in") }
       end
 
+      describe "consecutive failed login" do
+        let(:correct_password) { user.password }
+        before do
+          user.password = "Wrongpass"
+          maxlogin = Integer(ENV['MAX_LOGIN_ATTEMPTS'])
+          maxlogin.times { sign_in user }
+        end
+
+        # captcha shown
+        it { should have_content("You have failed more than") }
+
+        it "should be captcha verified" do
+          # even if user name and password are correct
+          user.password = correct_password
+          sign_in user
+          # if not enter captcha (a.k.a captcha verification failed)
+
+          # not logged in
+          page.should have_content("Sign in")
+        end
+      end
     end
 
+    describe "valid sigin" do
+      before { sign_in user }
+
+      it { should have_title("Welcome") }
+
+    end
   end
 end
