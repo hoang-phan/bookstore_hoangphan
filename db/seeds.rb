@@ -18,3 +18,21 @@
                birthday: "22/01/1992")
   user.confirm!
 end
+
+20.times do |n|
+  title = Faker::Lorem.sentence()
+  description = "description"
+  author_name = "author#{ (n + 1) % 4 }"
+  publisher_name = "publisher#{ n % 3 }"
+  unit_price = rand(10) / 3
+  photo = "photo#{ n }.png"
+  published_date = rand(2.months).ago
+  book = Book.create(title: title,
+                description: description,
+                author_name: author_name,
+                publisher_name: publisher_name,
+                unit_price: unit_price,
+                published_date: published_date,
+                photo: photo)
+end
+

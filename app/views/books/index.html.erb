@@ -1,0 +1,17 @@
+<% provide(:title, "All books") %>
+<div id="content1">
+  <div class="jumbotron">
+    <ul>
+    <% @books.each do |book| %>
+    <li>
+      <h1><%= book.id %>. <%= book.title %></h1>
+      <p><%= book.description %></p>
+      <p><%= book.unit_price %>$</p>
+      <p><%= book.author_name %></p>
+      <p><%= book.publisher_name %></p>
+      <p><%= book.published_date %></p>
+    </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

@@ -6,7 +6,7 @@
   <div><%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
   <% if session[:captcha] %>
-    <p>You have failed more than <%= ENV['MAX_LOGIN_ATTEMPTS'] %> login attempts</p>
+    <p id="capt-text">You have failed more than <%= ENV['MAX_LOGIN_ATTEMPTS'] %> login attempts</p>
     <%= recaptcha_tags %>
   <% end %>
 
