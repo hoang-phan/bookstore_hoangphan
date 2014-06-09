@@ -17,3 +17,6 @@
 
 #ignore coverage
 /coverage
+
+#ignore .idea
+/.idea
