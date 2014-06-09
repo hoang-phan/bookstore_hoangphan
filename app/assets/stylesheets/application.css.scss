@@ -15,10 +15,21 @@
 
  @import "bootstrap";
 
+ $light_header: #62594f;
+ $dark_header: #5b4635;
+ $cart: #00a099;
+ $price: #f29100;
+ $add_light: #ffc400;
+ $add_dark: #fdb62b;
+
  body {
-  font-family: "brandon-grosteque", sans-serif;
+  font-family: "OpenSans";
   background: url('http://images5.alphacoders.com/394/394911.jpg');
   background-size: 100%;
+}
+
+.navbar-inverse {
+  background: url("images/");
 }
 
 .nav {
@@ -37,9 +48,7 @@
   }
 }
 
-.navbar-inverse {
-  background-color: white;
-}
+
 
 .brand {
   background-position: 50% 50%;

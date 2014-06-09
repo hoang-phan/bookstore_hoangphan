@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Book do
+describe Category do
 
 end
