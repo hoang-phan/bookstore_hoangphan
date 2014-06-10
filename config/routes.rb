@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :books
   resources :categories
 
+  get "books/search"
+
   root 'static_pages#home'
 
 end
