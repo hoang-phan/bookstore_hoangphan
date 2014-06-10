@@ -1,6 +1,6 @@
-Feature:  Sign up page
-  A visitor
-  Could register to be a user
+Feature:  In Sign up page
+  As A visitor
+  I Could register to be a user
 
   Scenario: Blank registration
     Given I am on the new_user_registration page

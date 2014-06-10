@@ -1,6 +1,6 @@
-Feature:  Sign in page
-  A visitor
-  Could login to act as a user
+Feature:  In Sign in page
+  As A visitor
+  I Could login to act as a user
 
   Scenario: Blank login
     Given I am on the new_user_session page
@@ -12,9 +12,9 @@ Feature:  Sign in page
     And I have a user
     When I sign in
     Then I should see content "Rock with us members"
-    And I should see link "Logout"
-    When I click link "Logout"
-    Then I should see link "Login"
+    And I should see link "logout"
+    When I click link "logout"
+    Then I should see link "login"
 
   Scenario: Consecutive login fails
     Given I am on the new_user_session page
@@ -26,6 +26,6 @@ Feature:  Sign in page
     Then I should see content "Sign in"
     When I verify captcha
     And I sign in
-    Then I should see link "Logout"
+    Then I should see link "logout"
     And I should not see content "Sign in"
 
