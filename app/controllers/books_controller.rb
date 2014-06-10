@@ -7,4 +7,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def search
+    @books = Book.search(params[:search]).paginate(page: params[:page], per_page: 5)
+    render 'index'
+  end
+
 end
