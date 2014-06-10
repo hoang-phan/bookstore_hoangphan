@@ -5,14 +5,14 @@ class Book < ActiveRecord::Base
 
   has_many :line_items
 
-  before_destroy :ensure_cart_items
+  before_destroy :ensure_no_cart_items
 
   def Book.search(keyword, category_id=nil)
     where('title LIKE :keyword OR author_name LIKE :keyword', keyword: "%#{ keyword }%")
   end
 
   private
-    def ensure_cart_items
+    def ensure_no_cart_items
       return true if line_items.empty?
       errors.add(:base, 'Line Items present')
       false

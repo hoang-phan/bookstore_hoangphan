@@ -6,7 +6,7 @@ li.pull-left
     = book.author_name
   p
   - stars = 0
-  - stars = (book.total_rate_value / book.total_rating_count).to_nearest_i if book.total_rating_count > 0
+  - stars = (book.total_rating_value / book.total_rating_count) if book.total_rating_count > 0
   - stars.times do
     = image_tag "star-active.png"
   - (5 - stars).times do
