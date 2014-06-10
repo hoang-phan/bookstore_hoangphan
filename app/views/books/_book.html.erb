@@ -5,4 +5,5 @@
   <p><%= book.author_name %></p>
   <p><%= book.publisher_name %></p>
   <p><%= book.published_date %></p>
+  <p><%= button_to 'Add to Cart', line_items_path(book_id: book, method: :post) %></p>
 </li>

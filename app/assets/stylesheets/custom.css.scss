@@ -7,8 +7,6 @@ $price: #f29100;
 $add_light: #ffc400;
 $add_dark: #fdb62b;
 
-
-
 body {
   font-family: "OpenSans";
   background-size: 100%;
@@ -66,13 +64,15 @@ body {
 .brand {
   font-size: 38px;
   font-weight: 800;
-  margin: 10px 0 0 150px;
+  margin: 25px 0 0 150px;
   display: block;
-  overflow: hidden;
   position: absolute;
   .white { color: white }
   .black { color: black }
-  &:hover { text-decoration: none }
+  &:hover {
+    text-decoration: none;
+    background: none
+  }
 }
 
 #search-top {
@@ -93,6 +93,10 @@ body {
   left: 500px;
   width: 200px;
   border: 1px solid black;
+  border-radius: 0;
+}
+
+.navbar {
   border-radius: 0;
 }
 
