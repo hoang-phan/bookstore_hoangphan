@@ -16,7 +16,7 @@ describe "BookPages" do
       it { should have_selector('div.pagination') }
 
       it "should list each book" do
-        Book.paginate(page: 1, per_page: 5).each do |book|
+        Book.paginate(page: 1, per_page: 8).each do |book|
           expect(page).to have_content(book.title)
         end
       end

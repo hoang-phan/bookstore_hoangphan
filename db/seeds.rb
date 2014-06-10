@@ -20,12 +20,12 @@
 end
 
 20.times do |n|
-  title = Faker::Lorem.sentence()
-  description = "description"
+  title = "Book lavender"
+  description = Faker::Lorem.paragraph
   author_name = "author#{ (n + 1) % 4 }"
   publisher_name = "publisher#{ n % 3 }"
   unit_price = rand(10) / 3
-  photo = "photo#{ n }.png"
+  photo = "cover#{ n % 4 }.jpg"
   published_date = rand(2.months).ago
   Book.create(title: title,
                 description: description,

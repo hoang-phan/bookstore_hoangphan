@@ -1,0 +1,14 @@
+- provide(:title, "Category #{ @category }")
+#content1
+  .jumbotron
+    .page-head
+      span.page-head-title= @category.name
+      span#choose-per-page
+        | See &nbsp;
+        = select_tag "per-page", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe
+        | &nbsp; books per page
+      = will_paginate @books
+    ul#show-books
+      = render @books
+    .page-head
+      = will_paginate @books
