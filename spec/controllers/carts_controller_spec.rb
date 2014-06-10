@@ -100,15 +100,6 @@ describe CartsController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested cart" do
-        cart = Cart.create! valid_attributes
-        # Assuming there are no other carts in the database, this
-        # specifies that the Cart created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Cart.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => cart.to_param, :cart => { "these" => "params" }}, valid_session
-      end
 
       it "assigns the requested cart as @cart" do
         cart = Cart.create! valid_attributes
