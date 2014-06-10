@@ -12,6 +12,14 @@ body {
   background-size: 100%;
 }
 
+span {
+  display: inline-block;
+}
+
+h1, p {
+  text-align: left;
+}
+
 // header
 // .........
 .has_arrow_down {
@@ -77,14 +85,31 @@ body {
 
 #search-top {
   padding: 8px;
+  display: inline-block;
 }
 
-#search-top-input {
+input#search {
   width: 500px;
   padding: 8px 200px 10px 20px;
   margin-left: 140px;
   border: 1px solid black;
   border-radius: 0;
+}
+
+#search-button {
+  width: 36px;
+  height: 36px;
+  background: $add_light;
+  background-position: center;
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  i {
+    font-size: 20px;
+    line-height: 140%;
+    color: white;
+  }
 }
 
 #search-top-category {
@@ -100,11 +125,144 @@ body {
   border-radius: 0;
 }
 
+#category-search {
+  position: absolute;
+  top: 13px;
+  left: 500px;
+  padding: 10px 30px 10px 10px;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+    background: none;
+    background: image_url('arrow-down.png') no-repeat;
+    background-position: right 10px;
+  }
+}
+
+#category-select {
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 20px;
+  text-align: left;
+  background: $dark_header;
+  width: 600px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 0;
+  color: white;
+
+}
+
+.glyphicon-chevron-down {
+  position: absolute;
+  display: inline-block;
+  text-align: right;
+  top: 13px;
+  right: 10px;
+}
+
+#cart {
+  margin-left: 23px;
+  padding: 14px;
+  width: 350px;
+  background: $cart;
+  border: none;
+  border-radius: 0;
+  color: white;
+  .glyphicon-chevron-down {
+    top: 25px;
+  }
+}
+
+.circle {
+  width: 34px;
+  height: 34px;
+  background: $add_light;
+  color: $cart;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 //.........
 
-#content {
-  margin-top: 200px;
+// page head
+.page-head {
+  margin: 20px 0 0 125px;
+  text-align: left;
+  color: $add_dark;
 }
+
+.page-head-title {
+  font-size: 17px;
+  font-weight: bold;
+  width: 900px;
+}
+
+#choose-per-page {
+  font-size: 14px;
+  font-weight: normal;
+  width: 450px;
+}
+
+//............
+
+//content books
+
+#show-books {
+  margin: 20px 170px 10px 80px;
+  list-style: none;
+  width: 90%%;
+  display: block;
+  li {
+    width: 20%;
+    margin-right: 5%;
+    height: 500px;
+    overflow: hidden;
+    text-align: left;
+    border-right: 1px dotted gray;
+    .book-title {
+      font-size: 17px;
+      font-weight: normal;
+      color: $add_light;
+    }
+    .book-author {
+      margin-top: -9px;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .book-description {
+      font-size: 12px;
+      font-weight: normal;
+      height: 90px;
+      overflow: hidden;
+      text-align: justify;
+      width: 80%;
+    }
+    .book-price {
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: bold;
+      color: $add_dark;
+      .price {
+        width: 150px;
+      }
+      a {
+        right: 0;
+        width: 60px;
+        height: 30px;
+        color: white;
+        font-size: 14px;
+        padding: 15px;
+        background: linear-gradient(to bottom, $add_light, $add_dark);
+      }
+    }
+  }
+}
+
+
 
 #content1 {
   margin-top: 100px;
@@ -115,9 +273,7 @@ body {
   background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.9);
 }
 
-h1, p {
-  text-align: center;
-}
+
 
 h1 {
   font-size: 30px;
@@ -162,4 +318,41 @@ input {
 
 .container {
   width: 95%;
+}
+
+// .................
+
+//footer
+
+footer {
+  background: $light_header;
+  color: white;
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #main-footer {
+    padding: 10px 150px;
+    list-style: none;
+    height: 80px;
+  }
+}
+
+#invitation {
+  float:left;
+  width: 60%;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#social {
+  float:left;
+  width: 40%;
+}
+
+#copyright {
+  padding: 10px 150px;
+  background: $dark_header;
+  font-size: 12px;
+  font-weight: normal;
 }

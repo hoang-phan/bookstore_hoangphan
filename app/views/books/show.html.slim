@@ -1,0 +1,12 @@
+#content1
+  .jumbotron
+    h1
+      #{@book.id} . #{@book.title}
+    p
+      | Description: #{@book.description}
+    p
+      = @book.unit_price
+      | $
+    p= @book.author_name
+    p= @book.publisher_name
+    p= @book.published_date

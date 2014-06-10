@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
+gem 'haml'
+gem 'slim'
 gem "jruby-openssl", :platforms => :jruby
 gem "pg", '0.15.1'
 gem 'bootstrap-sass'
