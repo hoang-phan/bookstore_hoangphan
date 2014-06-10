@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = Book.search(params[:search]).paginate(page: params[:page], per_page: 5)
+    @books = Book.search(params[:search], params[:category_id]).paginate(page: params[:page], per_page: 5)
     render 'index'
   end
 
