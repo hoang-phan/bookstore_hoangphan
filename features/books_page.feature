@@ -1,6 +1,6 @@
-Feature:  Books page
-  A user
-  Could see the books
+Feature:  In Books page
+  As A user
+  I Could see the books
 
   Scenario: View books
   Given I am on the books page
@@ -17,3 +17,7 @@ Feature:  Books page
   And the book belongs to the category
   When I visit the category page
   Then I should see content of the book
+
+  Scenario: Show all categories
+  Given I am on the categories page
+  Then I should see title "All categories"
