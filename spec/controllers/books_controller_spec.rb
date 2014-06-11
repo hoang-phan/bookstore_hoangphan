@@ -26,4 +26,21 @@ describe BooksController do
     end
   end
 
+  context "rating" do
+    it "should post rating @books" do
+      post :rating, rating: 5, book_id: book.id
+    end
+  end
+
+  context "change_per_page" do
+    it "should post change_per_page @books" do
+      post :change_per_page, per_page: 8
+    end
+  end
+
+  context "destroy" do
+    it "should post change_per_page @books" do
+      delete :destroy, id: book.id
+    end
+  end
 end

@@ -1,0 +1,21 @@
+$(function(){
+  $("#per-page").val($("#tag-per-page").val());
+
+  $(".rating-star").hover(function(){
+    $(this).prevAll().attr("src", "/assets/star-active.png");
+    $(this).attr("src", "/assets/star-active.png");
+    $(this).nextAll().attr("src", "/assets/star-inactive.png");
+  });
+
+  $(".rating-star").click(function(){
+    $(".rating").val($(".rating-star").index(this) + 1);
+    $("#form-rating").submit();
+  });
+
+  $("#per-page").change(function(){
+    $.post("/books/change_per_page", { per_page: $(this).val() }, function(){
+      window.location.reload();
+    });
+  });
+
+});

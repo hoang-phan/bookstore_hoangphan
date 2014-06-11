@@ -1,6 +1,7 @@
 li.pull-left
   p= image_tag book.photo, width: 150, height: 220
-  p.book-title= book.title
+  p.book-title
+    = link_to book.title, book_path(book)
   p.book-author
     | by &nbsp;
     = book.author_name

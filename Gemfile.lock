@@ -1,3 +1,20 @@
+GIT
+  remote: git://github.com/gregbell/active_admin.git
+  revision: 4f445b51c22b12af2cdde57fe2ce9835c32ef88e
+  specs:
+    activeadmin (1.0.0.pre)
+      arbre (~> 1.0)
+      bourbon
+      coffee-rails
+      formtastic (~> 2.3.0.rc3)
+      inherited_resources (~> 1.3)
+      jquery-rails
+      jquery-ui-rails
+      kaminari (~> 0.15)
+      rails (>= 3.2, < 4.2)
+      ransack (~> 1.0)
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,11 +48,19 @@ GEM
       bundler
       rake
       thor (>= 0.14.0)
+    arbre (1.0.1)
+      activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
+    byebug (3.1.2)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -52,6 +77,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.8.9)
     cucumber (1.3.15)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -65,6 +91,7 @@ GEM
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
     database_cleaner (1.3.0)
+    debugger-linecache (1.2.0)
     delayed_job (4.0.1)
       activesupport (>= 3.0, < 4.2)
     delayed_job_active_record (4.0.1)
@@ -89,19 +116,32 @@ GEM
     faker (1.3.0)
       i18n (~> 0.5)
     ffi (1.9.3)
+    formtastic (2.3.0.rc3)
+      actionpack (>= 3.0)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     haml (4.0.5)
       tilt
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hike (1.2.3)
     i18n (0.6.9)
+    inherited_resources (1.5.0)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0)
     jbuilder (2.0.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.1)
+      railties (>= 3.2.16)
     json (1.8.1)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -114,6 +154,8 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     pg (0.15.1)
+    polyamorous (1.0.0)
+      activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -139,9 +181,17 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
+    ransack (1.2.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.0.0)
     rdoc (4.1.1)
       json (~> 1.4)
     recaptcha (0.3.6)
+    responders (1.1.0)
+      railties (>= 3.2, < 5)
     rspec-core (2.14.8)
     rspec-expectations (2.14.5)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -193,8 +243,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.2)
-      coffee-rails
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
@@ -203,7 +251,6 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.0.7)
-    will_paginate (3.0.5)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -211,9 +258,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activeadmin!
   appraisal (~> 1.0)
   bcrypt
   bootstrap-sass
+  byebug
   chronic
   coffee-rails (~> 4.0.0)
   cucumber-rails
@@ -227,6 +276,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jruby-openssl
+  kaminari
   minitest
   pg (= 0.15.1)
   rails (= 4.1.1)
@@ -240,6 +290,4 @@ DEPENDENCIES
   slim
   spring
   sprockets
-  turbolinks
   uglifier (>= 1.3.0)
-  will_paginate

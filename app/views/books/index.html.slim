@@ -5,10 +5,12 @@
       span.page-head-title All categories
       span#choose-per-page
         | See &nbsp;
-        = select_tag "per-page", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe
+        = hidden_field_tag "tag-per-page", session[:per_page], id: "tag-per-page"
+        = select_tag "per-page", "<option value='8'>8</option><option value='12'>12</option><option value='16'>16</option>".html_safe
         | &nbsp; books per page
-      = will_paginate
+      = paginate @books
     ul#show-books
       = render @books
     .page-head
-      = will_paginate
+      span.adjust
+      = paginate @books
