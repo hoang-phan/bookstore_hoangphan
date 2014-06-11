@@ -9,7 +9,7 @@ Feature:  In Books page
   Scenario: Show book
   Given I have a book
   And I visit the book page
-  And I should see content "Description"
+  And I should see content "Save 20%"
 
   Scenario: Show category
   Given I have a book

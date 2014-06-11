@@ -20,6 +20,35 @@ h1, p {
   text-align: left;
 }
 
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -5px;
+}
+
+.span6 {
+  text-align: center;
+  float: left;
+  width: 20%;
+  img {
+    width: 70%;
+  }
+}
+
+.span2 {
+  float: left;
+  width: 62%;
+}
+
+.span7 {
+  float: left;
+  width: 15%;
+}
+
+.clear {
+  clear: both;
+}
+
 // header
 // .........
 .has_arrow_down {
@@ -190,35 +219,53 @@ input#search {
 
 // page head
 .page-head {
-  margin: 20px 0 0 125px;
+  margin: 40px 0 40px 28px;
   text-align: left;
   color: $add_dark;
+  display: block;
 }
 
 .page-head-title {
   font-size: 17px;
   font-weight: bold;
-  width: 900px;
+  width: 800px;
 }
 
 #choose-per-page {
   font-size: 14px;
   font-weight: normal;
   width: 450px;
+  select {
+    padding: 10px;
+    border-radius: 0;
+    color: black;
+  }
+}
+
+.adjust {
+  width: 1250px;
 }
 
 //............
 
 //content books
 
+#content1 {
+  margin: 100px 150px 0 90px;
+}
+
+.jumbotron {
+  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.9);
+}
+
 #show-books {
-  margin: 20px 170px 10px 80px;
+  margin: 10px 0;
   list-style: none;
-  width: 90%%;
+  width: 100%;
   display: block;
   li {
-    width: 20%;
-    margin-right: 5%;
+    width: 24%;
+    margin-right: 1%;
     height: 500px;
     overflow: hidden;
     text-align: left;
@@ -226,7 +273,17 @@ input#search {
     .book-title {
       font-size: 17px;
       font-weight: normal;
-      color: $add_light;
+      a {
+        color: $add_light;
+
+        &:hover {
+          color: $add_dark;
+          background: none;
+          text-decoration: none;
+        }
+
+      }
+
     }
     .book-author {
       margin-top: -9px;
@@ -247,38 +304,115 @@ input#search {
       font-weight: bold;
       color: $add_dark;
       .price {
-        width: 150px;
-      }
-      a {
-        right: 0;
-        width: 60px;
-        height: 30px;
-        color: white;
-        font-size: 14px;
-        padding: 15px;
-        background: linear-gradient(to bottom, $add_light, $add_dark);
+        width: 190px;
       }
     }
   }
 }
 
-
-
-#content1 {
-  margin-top: 100px;
-  text-align: center;
+#change-per-page {
+  display: inline-block;
+}
+.add-cart {
+  right: 0;
+  width: 60px;
+  height: 30px;
+  color: white;
+  font-size: 14px;
+  padding: 15px;
+  background: linear-gradient(to bottom, $add_light, $add_dark);
+  &:visited {
+    color: white;
+  }
 }
 
-.jumbotron {
-  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.9);
+//..........
+
+//show a book
+
+.info {
+  margin-top: 40px;
+  width: 100%;
+  p {
+    font-size: 13px;
+  }
+  .book-title {
+    color: $add_light;
+    font-weight: bold;
+  }
+  .book-author {
+    font-size: 15px;
+  }
+  .book-description {
+    height: 60px;
+    overflow: hidden;
+  }
+  .book-price {
+    width: 100%;
+    height: 200px;
+    background: radial-gradient(white, lightgray);
+    margin-top: 60px;
+    border-radius: 10px;
+    padding:20px;
+    p {
+      text-align: center;
+    }
+    .price {
+      font-size: 30px;
+      color: $add_light;
+    }
+    .button-cart {
+      margin-top: 25px;
+    }
+    .sale {
+      margin: 2px 0;
+      font-size: 15px;
+    }
+  }
+  .rate-count {
+    color: $add_light;
+  }
+  .publish {
+    font-style: italic;
+
+  }
 }
 
+.add-comment {
+  margin-top: 30px;
+  padding: 30px;
+  border-top: 1px dotted lightgray;
+  border-bottom: 1px dotted lightgray;
+  textarea {
+    width: 100%;
+    height: 100px;
+  }
+  span {
+    width: 95%;
+  }
+  a {
+    color: $cart;
+    text-decoration: underline;
+    &:hover {
+      color: $cart;
+      background: none;
+    }
+  }
+  .add-cart {
+    border: none;
+    border-radius: 0;
+    padding: 7px 10px 10px 8px;
+  }
+}
 
+.show-comment {
+  padding: 30px;
+}
 
-h1 {
-  font-size: 30px;
-  font-weight: 600;
-  letter-spacing: -5px;
+.title {
+  color: $add_light;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .btn-large {
@@ -320,6 +454,10 @@ input {
   width: 95%;
 }
 
+.pagination {
+  margin: 0 30px 0 0;
+}
+
 // .................
 
 //footer
@@ -355,4 +493,81 @@ footer {
   background: $dark_header;
   font-size: 12px;
   font-weight: normal;
+}
+
+//.............
+
+//register
+.jumbotron {
+  .title1 {
+    margin-left: 28px;
+    color: $cart;
+  }
+  .guide {
+    font-size: 12px;
+    margin-left: 28px;
+  }
+  .form-div {
+    margin: 25px;
+    border: 1px solid lightgray;
+    background: #eee;
+    p {
+      font-size: 15px;
+    }
+  }
+
+  .form-div-title {
+    width: 100%;
+    padding: 20px;
+    background: gray;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .form-div-content {
+    padding: 5px 30px 30px 20px;
+    input {
+      width: 500px;
+    }
+    input[type="checkbox"] {
+      width: 10px;
+    }
+  }
+
+  label {
+    width: 180px;
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .field_with_errors {
+    padding: 0;
+    display: inline-block;
+    background: none;
+    label {
+      color: red;
+    }
+  }
+
+  #error_explanation {
+    margin-left: 25px;
+  }
+
+  .btn-sign {
+    width: 100px;
+    height: 50px;
+    margin: 25px;
+    background: $add_light;
+    border: none;
+    border-radius: 0;
+  }
+
+  .other {
+    margin-left: 25px;
+  }
+
+  .adjust-height {
+    height: 120px;
+  }
 }

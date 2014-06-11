@@ -5,12 +5,12 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @books = @category.books.paginate(page: params[:page], per_page: 8)
+    @books = @category.books.page(params[:page]).per(session[:per_page])
   end
 
   def search
     @category = Category.find(params[:id])
-    @books = @category.books.search(params[:search]).paginate(page: params[:page], per_page: 8)
+    @books = @category.books.search(params[:search]).page(params[:page]).per(session[:per_page])
     render "books/index"
   end
 
