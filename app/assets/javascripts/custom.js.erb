@@ -18,4 +18,27 @@ $(function(){
     });
   });
 
+  $("#choose-category").click(function(){
+    $('#categories-menu').dropdown();
+  });
+
+  $("#category-search").click(function(){
+    $('#search-menu').dropdown();
+  });
+
+  $("#search-menu li").click(function(){
+    $("#category-search span").html("| " + $(this).find(".value").html());
+    var category_id = $(this).find(".hidden").html();
+    $("#category_id").val(category_id);
+  });
+
+  $("#search-button").click(function(){
+    $("#search-top").submit();
+  });
+
+  $(".add-to-cart").click(function(){
+    $.post("line_items", { book_id: $(this).find(".hidden").html() }, function(o) {
+      $("#cart-count").html(o['cart_item']);
+    });
+  });
 });

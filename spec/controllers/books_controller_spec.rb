@@ -19,13 +19,6 @@ describe BooksController do
     end
   end
 
-  context "search" do
-    it "should set @books" do
-      get :search, search: "keyword"
-      assigns[:books].should eq([book1, book2])
-    end
-  end
-
   context "rating" do
     it "should post rating @books" do
       post :rating, rating: 5, book_id: book.id

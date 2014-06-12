@@ -8,10 +8,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions"}
   resources :books
   resources :categories
-  # resources :sessions, only: :change_per_page
+  resources :search, only: :index
 
-  get "books/search"
-  get "categories/search"
   post "books/rating"
   post "books/change_per_page"
 

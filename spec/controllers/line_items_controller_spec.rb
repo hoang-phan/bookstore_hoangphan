@@ -63,43 +63,6 @@ describe LineItemsController do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new LineItem" do
-        expect {
-          post :create, {:line_item => valid_attributes}, valid_session
-        }.to change(LineItem, :count).by(1)
-      end
-
-      it "assigns a newly created line_item as @line_item" do
-        post :create, {:line_item => valid_attributes}, valid_session
-        assigns(:line_item).should be_a(LineItem)
-        assigns(:line_item).should be_persisted
-      end
-
-      it "redirects to the created line_item" do
-        post :create, {:line_item => valid_attributes}, valid_session
-        response.should redirect_to(LineItem.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved line_item as @line_item" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        LineItem.any_instance.stub(:save).and_return(false)
-        post :create, {:line_item => { "book" => "invalid value" }}, valid_session
-        assigns(:line_item).should be_a_new(LineItem)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        LineItem.any_instance.stub(:save).and_return(false)
-        post :create, {:line_item => { "book" => "invalid value" }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
   describe "PUT update" do
     describe "with valid params" do
 

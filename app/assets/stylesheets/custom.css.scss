@@ -49,6 +49,14 @@ h1 {
   clear: both;
 }
 
+a, a:hover, a:visited {
+  text-decoration: none !important;
+}
+
+.dropdown-menu {
+  left: 20px;
+}
+
 // header
 // .........
 .has_arrow_down {
@@ -134,6 +142,7 @@ input#search {
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  margin-left: 10px;
   i {
     font-size: 20px;
     line-height: 140%;
@@ -157,8 +166,15 @@ input#search {
 #category-search {
   position: absolute;
   top: 13px;
-  left: 500px;
   padding: 10px 30px 10px 10px;
+  left: 440px;
+  width: 200px;
+  text-transform: lowercase;
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 160px;
+  }
   &:hover {
     color: inherit;
     text-decoration: none;
@@ -166,6 +182,15 @@ input#search {
     background: image_url('arrow-down.png') no-repeat;
     background-position: right 10px;
   }
+}
+
+#search-menu {
+  top: 42px;
+  left: 451px;
+  border-top: none;
+  border-radius: 0;
+  padding: 11px;
+  font-size: 12px;
 }
 
 #category-select {
@@ -179,7 +204,24 @@ input#search {
   border: none;
   border-radius: 0;
   color: white;
+}
 
+#categories-menu {
+  padding-top: 0;
+  border-radius: 0;
+  width: 600px;
+  padding-right: 30px;
+  li {
+    border-right: 1px solid $add_light;
+    border-top: 1px dotted gray;
+    a {
+      padding: 20px;
+    }
+    &.selected {
+      padding: 20px;
+      background: #ffee99;
+    }
+  }
 }
 
 .glyphicon-chevron-down {
@@ -190,6 +232,8 @@ input#search {
   right: 10px;
 }
 
+//..............
+// cart
 #cart {
   margin-left: 23px;
   padding: 14px;
@@ -213,6 +257,42 @@ input#search {
   border-radius: 20px;
   display: inline-block;
   vertical-align: middle;
+}
+
+#cart-menu {
+  padding: 12px 0 12px 0;
+  background: #00a099;
+  border: none;
+  border-radius: 0;
+  left: 24px;
+  top: 60px;
+  li {
+    padding: 5px 12px 0 12px;
+  }
+  span {
+    color: white;
+    font-size: 10px;
+    &.big {
+      font-size: 15px;
+    }
+  }
+  .total {
+    background: #008877;
+    span {
+      color: $add_light;
+    }
+  }
+  .title {
+    width: 200px;
+  }
+  .amount {
+    width: 25px;
+    text-align: right;
+  }
+  .price {
+    width: 100px;
+    text-align: right;
+  }
 }
 
 //.........
@@ -313,17 +393,26 @@ input#search {
 #change-per-page {
   display: inline-block;
 }
+
+
+
 .add-cart {
   right: 0;
   width: 60px;
   height: 30px;
-  color: white;
+  color: white !important;
   font-size: 14px;
   padding: 15px;
-  background: linear-gradient(to bottom, $add_light, $add_dark);
+  background: linear-gradient(to bottom, $add_light, $add_dark) !important;
+  border: none !important;
+  border-radius: 0 !important;
   &:visited {
-    color: white;
+    color: white !important;
   }
+}
+
+#adjust-no-result {
+  padding: 20px 20px 380px 8px;
 }
 
 //..........
@@ -369,13 +458,14 @@ input#search {
       font-size: 15px;
     }
   }
-  .rate-count {
-    color: $add_light;
-  }
   .publish {
     font-style: italic;
 
   }
+}
+
+.rate-count {
+  color: $add_light;
 }
 
 .add-comment {
@@ -552,15 +642,23 @@ footer {
 
   #error_explanation {
     margin-left: 25px;
+    ul {
+      margin-left: 15px;
+      padding: 10px;
+    }
   }
 
   .btn-sign {
     width: 100px;
     height: 50px;
     margin: 25px;
-    background: $add_light;
+    background: $cart;
     border: none;
     border-radius: 0;
+    &.no-width-restrict {
+      width: auto;
+      background: linear-gradient(-90deg, #8b9297, #484d51);
+    }
   }
 
   .other {
@@ -570,4 +668,11 @@ footer {
   .adjust-height {
     height: 120px;
   }
+
+  .buttons {
+    div {
+      display: inline-block;
+    }
+  }
 }
+

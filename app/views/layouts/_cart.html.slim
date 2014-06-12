@@ -1,0 +1,27 @@
+button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+  = image_tag "cart.png"
+  | Basket (0 $) &nbsp;
+  span#cart-count.circle= @cart.line_items.count
+  span.glyphicon.glyphicon-chevron-down
+ul#cart-menu.dropdown-menu role="menu"
+  - @cart.line_items.each do |item|
+    li
+      span.title= item.book.title
+      span.amount 1
+      span.price &#36;#{item.book.unit_price}
+  li.total
+    span.title subtotal
+    span.amount= @cart.line_items.count
+    span.price
+  li.total
+    span.title delivery
+    span.amount
+    span.price $5.0
+  li.total
+    span.title TOTAL
+    span.amount
+    span.price.big $12.0
+  li
+    span.title
+    span.amount
+    span.price= link_to "Modify order", "#"

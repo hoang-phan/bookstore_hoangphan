@@ -33,11 +33,4 @@ describe CategoriesController do
     end
   end
 
-  context "search" do
-    it "should set @books" do
-      get :search, id: category.id, search: "keyword"
-      assigns[:books].should eq([book1, book2])
-    end
-  end
-
 end
