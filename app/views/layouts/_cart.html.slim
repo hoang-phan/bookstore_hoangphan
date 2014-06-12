@@ -1,8 +1,14 @@
+- subtotal = @cart.books.sum :unit_price
+- total = subtotal + 5
 button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
   = image_tag "cart.png"
-  | Basket (0 $) &nbsp;
-  span#cart-count.circle= @cart.line_items.count
+  | Basket (
+  span.value-total #{ total }&#36;
+  | ) &nbsp;
+  span.cart-count.circle= @cart.line_items.count
   span.glyphicon.glyphicon-chevron-down
+#subtotal.hidden= subtotal
+#count.hidden= @cart.line_items.count
 ul#cart-menu.dropdown-menu role="menu"
   - @cart.line_items.each do |item|
     li
@@ -11,8 +17,8 @@ ul#cart-menu.dropdown-menu role="menu"
       span.price &#36;#{item.book.unit_price}
   li.total
     span.title subtotal
-    span.amount= @cart.line_items.count
-    span.price=
+    span.cart-count.amount= @cart.line_items.count
+    span.value-subtotal.price &#36;#{ subtotal }
   li.total
     span.title delivery
     span.amount
@@ -20,7 +26,7 @@ ul#cart-menu.dropdown-menu role="menu"
   li.total
     span.title TOTAL
     span.amount
-    span.price.big $12.0
+    span.value-total.price.big &#36;#{ total }
   li
     span.title
     span.amount

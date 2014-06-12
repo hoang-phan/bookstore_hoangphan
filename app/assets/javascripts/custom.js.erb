@@ -38,7 +38,24 @@ $(function(){
 
   $(".add-to-cart").click(function(){
     $.post("line_items", { book_id: $(this).find(".hidden").html() }, function(o) {
-      $("#cart-count").html(o['cart_item']);
+      book = o['book'];
+
+      title_span = "<span class='title'>" + book['title'] + "</span>";
+      amount_span = "<span class='amount'>1</span>";
+      price_span = "<span class='price'>$" + book['unit_price'] + "</span>";
+
+      subtotal = parseFloat($("#subtotal").html()) + parseFloat(book['unit_price']);
+      count = parseFloat($("#count").html()) + 1;
+      total = subtotal + 5;
+
+      $(".value-subtotal").html( "$" + subtotal.toFixed(1) );
+      $(".value-total").html( "$" + total.toFixed(1) );
+      $(".cart-count").html( count );
+
+      $("#subtotal").html(subtotal);
+      $("#count").html(count);
+
+      $("#cart-menu").prepend("<li>" + title_span + amount_span + price_span + "</li>");
     });
   });
 });
