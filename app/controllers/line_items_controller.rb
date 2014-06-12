@@ -29,7 +29,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        msg = { cart_item: @cart.line_items.count }
+        msg = { book: book }
         format.json  { render json: msg }
       else
         format.json  { render json: nil }
