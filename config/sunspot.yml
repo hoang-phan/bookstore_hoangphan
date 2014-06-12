@@ -1,3 +1,4 @@
+solr_home: solr
 production:
   solr:
     hostname: localhost
@@ -20,4 +21,3 @@ test:
     port: 8981
     log_level: WARNING
     path: /solr/test
-    
