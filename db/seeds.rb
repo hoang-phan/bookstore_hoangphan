@@ -20,12 +20,12 @@
 end
 
 20.times do |n|
-  title = "Book lavender"
+  title = Faker::Company.name
   description = Faker::Lorem.paragraph
-  author_name = "author#{ (n + 1) % 4 }"
-  publisher_name = "publisher#{ n % 3 }"
+  author_name = Faker::Name.name
+  publisher_name = Faker::Commerce.color
   unit_price = rand(10) / 3
-  photo = "cover#{ n % 4 }.jpg"
+  photo = "cover#{ n % 5 }.jpg"
   published_date = rand(2.months).ago
   Book.create(title: title,
                 description: description,
@@ -37,11 +37,12 @@ end
 end
 
 10.times do |n|
-  name = "category#{ n }"
+  name = "#{Faker::Commerce.department} #{ n }"
   sort_order = n
   category = Category.create(name: name,
                   sort_order: sort_order)
   category.book_category_items.create!(book_id: n)
-  category.book_category_items.create!(book_id: 10 + n)
+  category.book_category_items.create!(book_id: 9 + n)
+  category.book_category_items.create!(book_id: 8 + n)
 end
 

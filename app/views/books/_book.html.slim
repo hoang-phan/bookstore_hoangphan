@@ -17,7 +17,8 @@ li.pull-left
     span.price
       = book.unit_price
       | &nbsp;$
-    a.add-cart href="#"
+    a.add-cart.add-to-cart href="#"
+      span.hidden= book.id
       span Add &nbsp;
       span
         = image_tag "cart.png", width: 40, height: 30

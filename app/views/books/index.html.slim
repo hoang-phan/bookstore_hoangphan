@@ -1,8 +1,8 @@
-- provide(:title, "All books")
+- provide(:title, @title)
 #content1
   .jumbotron
     .page-head
-      span.page-head-title All categories
+      span.page-head-title= @category_title
       span#choose-per-page
         | See &nbsp;
         = hidden_field_tag "tag-per-page", session[:per_page], id: "tag-per-page"
@@ -10,7 +10,10 @@
         | &nbsp; books per page
       = paginate @books
     ul#show-books
-      = render @books
+      - if @books.count > 0
+        = render @books
+      - else
+        p#adjust-no-result No result found
     .page-head
       span.adjust
       = paginate @books

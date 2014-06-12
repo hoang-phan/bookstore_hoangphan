@@ -24,15 +24,15 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(line_item_params)
+    book = Book.find(params[:book_id])
+    @line_item = @cart.line_items.build(book: book)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
-        format.json { render :show, status: :created, location: @line_item }
+        msg = { cart_item: @cart.line_items.count }
+        format.json  { render json: msg }
       else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.json  { render json: nil }
       end
     end
   end
