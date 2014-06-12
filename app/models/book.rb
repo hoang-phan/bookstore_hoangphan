@@ -6,9 +6,9 @@ class Book < ActiveRecord::Base
 
   before_destroy :ensure_no_cart_items
 
-  searchable do
-    text :title, :author_name
-  end
+  # searchable do
+  #   text :title, :author_name
+  # end
 
   # def Book.search(keyword, category_id=nil)
   #   where('title LIKE :keyword OR author_name LIKE :keyword', keyword: "%#{ keyword }%")
