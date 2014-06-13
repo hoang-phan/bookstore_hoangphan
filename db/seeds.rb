@@ -46,3 +46,7 @@ end
   category.book_category_items.create!(book_id: 8 + n)
 end
 
+AdminUser.create(email:"test@test.com", password: "password", password_confirmation: "password")
+
+
+

@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+
   def index
     @search = PgSearch.multisearch(params[:search])
     session[:per_page] ||= 8

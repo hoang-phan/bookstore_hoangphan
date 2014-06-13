@@ -8,7 +8,7 @@ FactoryGirl.define do
     publisher_name "MyString"
     published_date "2014-06-09"
     unit_price "9.99"
-    photo "MyString"
+    photo "cover0.jpg"
     total_rating_count 1
     total_rating_value 1
   end

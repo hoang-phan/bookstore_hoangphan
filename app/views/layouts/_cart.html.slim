@@ -1,33 +1,36 @@
-- subtotal = @cart.books.sum :unit_price
-- total = subtotal + 5
+#cart_id.hidden = session[:cart_id]
+- subtotal = @cart.total_price
+- count = @cart.total_quantity
+- delivery = 0
+- if subtotal > 0
+  - delivery = 5
+- total = subtotal + delivery
 button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
   = image_tag "cart.png"
   | Basket (
   span.value-total #{ total }&#36;
   | ) &nbsp;
-  span.cart-count.circle= @cart.line_items.count
+  span.cart-count.circle= count
   span.glyphicon.glyphicon-chevron-down
-#subtotal.hidden= subtotal
-#count.hidden= @cart.line_items.count
 ul#cart-menu.dropdown-menu role="menu"
   - @cart.line_items.each do |item|
-    li
+    li id="cart-book-#{ item.book.id }"
       span.title= item.book.title
-      span.amount 1
-      span.price &#36;#{item.book.unit_price}
+      span.amount= item.quantity
+      span.price &#36;#{item.total_price}
   li.total
     span.title subtotal
-    span.cart-count.amount= @cart.line_items.count
+    span.cart-count.amount= count
     span.value-subtotal.price &#36;#{ subtotal }
   li.total
     span.title delivery
     span.amount
-    span.price $5.0
+    span.price &#36;#{delivery.round(1)}
   li.total
     span.title TOTAL
     span.amount
     span.value-total.price.big &#36;#{ total }
-  li
-    span.title
-    span.amount
-    span.price= link_to "Modify order", "#"
+  li.button-group
+    span.adjust1
+    span= button_to "Checkout", "#", class: "buttona", id: "checkout-cart"
+    span= button_to "Empty cart", @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "buttona"

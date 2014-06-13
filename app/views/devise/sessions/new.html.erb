@@ -1,33 +1,29 @@
-<div id="content1">
-  <div class="jumbotron">
-    <h2 class="title1">Sign in</h2>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-div">
-        <p class="form-div-title">Fill in below fields</p>
-        <div class="form-div-content">
-          <div><%= f.label :email %>
-          <%= f.email_field :email, autofocus: true %></div>
+<% provide(:title, "Sign in") %>
+<h2 class="title1">Sign in</h2>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-div">
+    <p class="form-div-title">Fill in below fields</p>
+    <div class="form-div-content">
+      <div><%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %></div>
 
-          <div><%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "off" %></div>
-          <br>
-          <% if session[:captcha] %>
-            <p id="capt-text">You have failed more than <%= ENV['MAX_LOGIN_ATTEMPTS'] %> login attempts</p>
-            <%= recaptcha_tags %>
-          <% end %>
+      <div><%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off" %></div>
+      <br>
+      <% if session[:captcha] %>
+        <p id="capt-text">You have failed more than <%= ENV['MAX_LOGIN_ATTEMPTS'] %> login attempts</p>
+        <%= recaptcha_tags %>
+      <% end %>
 
-          <% if devise_mapping.rememberable? -%>
-            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-          <% end -%>
-        </div>
-      </div>
-      <div><%= f.submit "Sign in", class: "btn-sign" %></div>
-    <% end %>
-    <div class="other">
-      <%= render "devise/shared/links" %>
-    </div>
-    <div class="adjust-height">
+      <% if devise_mapping.rememberable? -%>
+        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+      <% end -%>
     </div>
   </div>
-
+  <div><%= f.submit "Sign in", class: "btn-sign" %></div>
+<% end %>
+<div class="other">
+  <%= render "devise/shared/links" %>
+</div>
+<div class="adjust-height">
 </div>
