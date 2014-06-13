@@ -15,12 +15,14 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'faker'
+gem 'haml'
+gem 'slim'
 gem "jruby-openssl", :platforms => :jruby
 gem "pg", '0.15.1'
 gem 'bootstrap-sass'
@@ -28,6 +30,9 @@ gem 'sprockets'
 gem "recaptcha"
 gem 'devise'
 gem "devise-async"
+gem "kaminari"
+gem 'progress_bar'
+gem 'pg_search'
 
 group :development, :test do
   gem 'factory_girl_rails'
@@ -51,3 +56,5 @@ gem 'spring',        group: :development
 gem 'bcrypt'
 gem 'delayed_job_active_record'
 gem 'chronic'
+
+gem 'activeadmin', github: 'gregbell/active_admin'

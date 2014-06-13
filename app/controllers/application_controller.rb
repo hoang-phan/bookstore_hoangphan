@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :get_global_variables
+  include CurrentCart
+  before_action :set_cart
+
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
   protected
@@ -20,4 +24,9 @@ class ApplicationController < ActionController::Base
       }
     end
   end
+
+  def get_global_variables
+    @categories = Category.order('sort_order DESC')
+  end
+
 end

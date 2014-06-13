@@ -1,0 +1,62 @@
+$(function(){
+  $("#per-page").val($("#tag-per-page").val());
+
+  $(".rating-star").hover(function(){
+    $(this).prevAll().attr("src", "/assets/star-active.png");
+    $(this).attr("src", "/assets/star-active.png");
+    $(this).nextAll().attr("src", "/assets/star-inactive.png");
+  });
+
+  $(".rating-star").click(function(){
+    $(".rating").val($(".rating-star").index(this) + 1);
+    $("#form-rating").submit();
+  });
+
+  $("#per-page").change(function(){
+    $.post("/books/change_per_page", { per_page: $(this).val() }, function(){
+      window.location.reload();
+    });
+  });
+
+  $("#choose-category").click(function(){
+    $('#categories-menu').dropdown();
+  });
+
+  $("#category-search").click(function(){
+    $('#search-menu').dropdown();
+  });
+
+  $("#search-menu li").click(function(){
+    $("#category-search span").html("| " + $(this).find(".value").html());
+    var category_id = $(this).find(".hidden").html();
+    $("#category_id").val(category_id);
+  });
+
+  $("#search-button").click(function(){
+    $("#search-top").submit();
+  });
+
+  $(".add-to-cart").click(function(){
+    $.post("/line_items", { book_id: $(this).find(".hidden").html() }, function(o) {
+      book = o['book'];
+      if (o['is_new']) {
+        title_span = "<span class='title'>" + book['title'] + "</span>";
+        amount_span = "<span class='amount'>1</span>";
+        price_span = "<span class='price'>$" + book['unit_price'] + "</span>";
+
+        $("#cart-menu").prepend("<li id='cart-book-" + book['id'] + "'>" + title_span + amount_span + price_span + "</li>");
+      } else {
+        li_book = $("#cart-book-" + book['id']);
+        li_book.find(".amount").html(o["amount"]);
+        li_book.find(".price").html("$" + o["total_price"]);
+      }
+
+      subtotal = parseFloat(o["subtotal"]);
+      total = subtotal + 5;
+
+      $(".value-subtotal").html( "$" +  subtotal.toFixed(1) );
+      $(".value-total").html( "$" + total.toFixed(1) );
+      $(".cart-count").html( o["quantity"] );
+    });
+  });
+});

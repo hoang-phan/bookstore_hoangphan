@@ -1,0 +1,19 @@
+button#category-select.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+  - if @category
+    = @category.name
+  - else
+    | All categories
+  span#choose-category.glyphicon.glyphicon-chevron-down
+ul#categories-menu.dropdown-menu role="menu"
+  - @categories.each do |category|
+    - if @category && @category.id == category.id
+      li.selected
+        = category.name
+        span.rate-count &nbsp;&#40; #{category.books.count} &#41;
+    - else
+      li= link_to(category_path(category)) do
+        = category.name
+        span.rate-count &nbsp;&#40; #{category.books.count} &#41;
+  li= link_to(books_path) do
+    | All categories
+    span.rate-count &nbsp;&#40; #{Book.count} &#41;
