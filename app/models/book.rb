@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+  include PgSearch
+
   has_many :book_category_items, dependent: :destroy
   has_many :categories, through: :book_category_items
 
@@ -6,13 +8,7 @@ class Book < ActiveRecord::Base
 
   before_destroy :ensure_no_cart_items
 
-  # searchable do
-  #   text :title, :author_name
-  # end
-
-  # def Book.search(keyword, category_id=nil)
-  #   where('title LIKE :keyword OR author_name LIKE :keyword', keyword: "%#{ keyword }%")
-  # end
+  multisearchable :against => [:title, :author_name]
 
   def add_rating(rating)
     increment!(:total_rating_count)
