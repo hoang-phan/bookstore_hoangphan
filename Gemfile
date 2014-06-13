@@ -43,7 +43,6 @@ group :development, :test do
   gem "appraisal", "~> 1.0"
   gem 'simplecov', '~> 0.7.1', :require => false
   gem 'selenium-webdriver'
-  gem 'byebug'
 end
 
 group :production do
