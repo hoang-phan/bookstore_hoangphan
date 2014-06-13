@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :line_items
-
-
 
   devise_for :users, :controllers => {:sessions => "sessions"}
   resources :books
-  resources :carts
+  resources :orders
+  resources :order_lines
   resources :categories
   resources :search, only: :index
 

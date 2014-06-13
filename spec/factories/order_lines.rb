@@ -1,8 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :line_item do
+  factory :order_line do
+    order nil
     book nil
-    cart nil
+    quantity 1
   end
 end
