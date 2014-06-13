@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :line_items
 
-  resources :carts
+
 
   devise_for :users, :controllers => {:sessions => "sessions"}
   resources :books
+  resources :carts
   resources :categories
   resources :search, only: :index
 

@@ -1,8 +1,6 @@
 module CurrentCart
   extend ActiveSupport::Concern
 
-  private
-
   def set_cart
     begin
       @cart = Cart.find(session[:cart_id])

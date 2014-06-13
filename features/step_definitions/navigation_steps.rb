@@ -1,5 +1,9 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
+Given /^I am an admin$/ do
+  @admin = AdminUser.create(email:"test1@test.com", password: "password", password_confirmation: "password")
+end
+
 Given /^I have a user$/ do
   @user = FactoryGirl.create(:user)
   @user.confirm!
@@ -41,6 +45,14 @@ When /^I click link "(.*?)"$/ do |button|
   click_link(button)
 end
 
+When /^I click image link "(.*?)"$/ do |button|
+  page.find(:css, "#{button}", match: :first).click
+end
+
+When /^I select "(.*?)" from "(.*?)"$/ do |tag, select|
+  page.select(tag, from: select)
+end
+
 When /^I fill in "(.*?)" with "(.*?)"$/ do |label, value|
   fill_in label, with: value
 end
@@ -49,6 +61,16 @@ When /^I sign in$/ do
   fill_in "Email", with: @user.email
   fill_in "Password", with: @user.password
   click_button "Sign in"
+end
+
+When /^I login$/ do
+  fill_in "Email", with: @admin.email
+  fill_in "Password", with: @admin.password
+  click_button "Login"
+end
+
+When /^I confirm$/ do
+  page.driver.browser.switch_to.alert.accept
 end
 
 When /^I sign in fail$/ do
@@ -67,6 +89,10 @@ end
 
 When /^I verify captcha$/ do
   SessionsController.any_instance.stub(:verify_recaptcha) { true }
+end
+
+When /^I wait for (\d+) seconds?$/ do |n|
+  sleep(n.to_i)
 end
 
 Then /^I should see my email$/ do

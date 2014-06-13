@@ -293,6 +293,18 @@ input#search {
     width: 100px;
     text-align: right;
   }
+  .button-group {
+    padding: 30px 20px 20px 20px;
+    a {
+      margin-left: 20px;
+    }
+    .adjust1 {
+      width: 100px;
+    }
+    .buttona {
+      font-size: 14px;
+    }
+  }
 }
 
 //.........
@@ -396,9 +408,9 @@ input#search {
 
 
 
-.add-cart {
+.buttona {
   right: 0;
-  width: 60px;
+  width: auto;
   height: 30px;
   color: white !important;
   font-size: 14px;
@@ -488,7 +500,7 @@ input#search {
       background: none;
     }
   }
-  .add-cart {
+  .buttona {
     border: none;
     border-radius: 0;
     padding: 7px 10px 10px 8px;
@@ -655,10 +667,11 @@ footer {
     background: $cart;
     border: none;
     border-radius: 0;
-    &.no-width-restrict {
-      width: auto;
-      background: linear-gradient(-90deg, #8b9297, #484d51);
-    }
+  }
+
+  .no-width-restrict {
+    width: auto !important;
+    background: linear-gradient(-90deg, #8b9297, #484d51);
   }
 
   .other {

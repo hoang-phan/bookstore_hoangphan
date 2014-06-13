@@ -25,11 +25,13 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     book = Book.find(params[:book_id])
-    @line_item = @cart.line_items.build(book: book)
+    @line_item = @cart.add_book(book.id)
+    is_new = @line_item.quantity == 1
 
     respond_to do |format|
       if @line_item.save
-        msg = { book: book }
+        msg = { book: book, amount: @line_item.quantity, total_price: @line_item.total_price,
+          subtotal: @cart.total_price, quantity: @cart.total_quantity, is_new: is_new }
         format.json  { render json: msg }
       else
         format.json  { render json: nil }
@@ -69,6 +71,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.permit(:book_id, :cart_id)
+      params.require(:line_item).permit(:book_id)
     end
 end

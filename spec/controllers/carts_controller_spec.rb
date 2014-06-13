@@ -144,7 +144,7 @@ describe CartsController do
     it "redirects to the carts list" do
       cart = Cart.create! valid_attributes
       delete :destroy, {:id => cart.to_param}, valid_session
-      response.should redirect_to(carts_url)
+      response.should redirect_to(books_url)
     end
   end
 
