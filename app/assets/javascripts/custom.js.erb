@@ -37,7 +37,7 @@ $(function(){
   });
 
   $(".add-to-cart").click(function(){
-    $.post("/line_items", { book_id: $(this).find(".hidden").html() }, function(o) {
+    $.post("/order_lines", { book_id: $(this).find(".hidden").html() }, function(o) {
       book = o['book'];
       if (o['is_new']) {
         title_span = "<span class='title'>" + book['title'] + "</span>";

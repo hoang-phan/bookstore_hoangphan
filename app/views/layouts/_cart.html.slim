@@ -1,6 +1,6 @@
 #cart_id.hidden = session[:cart_id]
-- subtotal = @cart.total_price
-- count = @cart.total_quantity
+- subtotal = @order.total_price
+- count = @order.total_quantity
 - delivery = 0
 - if subtotal > 0
   - delivery = 5
@@ -13,7 +13,7 @@ button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
   span.cart-count.circle= count
   span.glyphicon.glyphicon-chevron-down
 ul#cart-menu.dropdown-menu role="menu"
-  - @cart.line_items.each do |item|
+  - @order.order_lines.each do |item|
     li id="cart-book-#{ item.book.id }"
       span.title= item.book.title
       span.amount= item.quantity
@@ -33,4 +33,4 @@ ul#cart-menu.dropdown-menu role="menu"
   li.button-group
     span.adjust1
     span= button_to "Checkout", "#", class: "buttona", id: "checkout-cart"
-    span= button_to "Empty cart", @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: "buttona"
+    span= button_to "Empty cart", @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "buttona"

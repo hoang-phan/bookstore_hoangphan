@@ -32,7 +32,7 @@ describe BooksController do
   end
 
   context "destroy" do
-    it "should post change_per_page @books" do
+    it "should destroy @book" do
       delete :destroy, id: book.id
     end
   end

@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :get_global_variables
-  include CurrentCart
-  before_action :set_cart
+  include CurrentOrder
+  before_action :set_order
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 

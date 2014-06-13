@@ -1,6 +1,6 @@
-class LineItem < ActiveRecord::Base
+class OrderLine < ActiveRecord::Base
+  belongs_to :order
   belongs_to :book
-  belongs_to :cart
 
   def total_price
     book.unit_price * quantity

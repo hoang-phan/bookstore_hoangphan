@@ -4,7 +4,7 @@ class Book < ActiveRecord::Base
   has_many :book_category_items, dependent: :destroy
   has_many :categories, through: :book_category_items
 
-  has_many :line_items
+  has_many :order_lines
 
   before_destroy :ensure_no_cart_items
 
@@ -18,7 +18,7 @@ class Book < ActiveRecord::Base
 
   private
     def ensure_no_cart_items
-      return true if line_items.empty?
+      return true if order_lines.empty?
       errors.add(:base, 'Line Items present')
       false
     end
