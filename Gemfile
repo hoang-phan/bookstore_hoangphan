@@ -31,9 +31,8 @@ gem "recaptcha"
 gem 'devise'
 gem "devise-async"
 gem "kaminari"
-gem 'sunspot_solr', github: 'sunspot/sunspot', branch: 'master'
-gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
 gem 'progress_bar'
+gem 'pg_search'
 
 group :development, :test do
   gem 'factory_girl_rails'
