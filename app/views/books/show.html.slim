@@ -51,8 +51,7 @@ section.add-comment
     = form_tag "#", method: "post" do
       = text_area(:comment, :text, cols: 10)
       br
-      span
-        = link_to "Cancel", "#"
+      span= link_to "Cancel", "#"
       = submit_tag "Send", class: "buttona"
 section.show-comment
   h2.title Comments:(0)
