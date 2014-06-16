@@ -5,8 +5,10 @@ module CurrentOrder
     begin
       @order = Order.find(session[:order_id])
     rescue ActiveRecord::RecordNotFound
-      @order = Order.create
-      session[:order_id] = @order.id
+      if current_user
+        @order = Order.create(user_id: current_user.id)
+        session[:order_id] = @order.id
+      end
     end
   end
 end

@@ -1,0 +1,3 @@
+- provide(:title, "Your past orders")
+- @orders.each do |order|
+  h2= link_to "#{order.id}. #{order.order_date}", order_path(order)

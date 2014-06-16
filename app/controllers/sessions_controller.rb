@@ -1,5 +1,8 @@
 class SessionsController < Devise::SessionsController
 
+  include CurrentOrder
+  after_action :set_order, only: [ :create ]
+
   def new
     super
   end
