@@ -44,15 +44,13 @@ section.add-comment
   - 5.times do |n|
     = image_tag "star-inactive.png", class: "rating-star"
   p
-    = form_tag books_rating_path, method: "post", id: "form-rating" do
-      = hidden_field_tag "rating", 0, class: "rating"
-      = hidden_field_tag "book_id", @book.id
-
-    = form_tag "#", method: "post" do
-      = text_area(:comment, :text, cols: 10)
+    = form_for :comment, url: comments_path, method: :post do |f|
+      = f.hidden_field :rating, value: 0
+      = f.hidden_field :book_id, value: @book.id
+      = f.text_area :content
       br
       span= link_to "Cancel", "#"
-      = submit_tag "Send", class: "buttona"
+      = f.submit "Send", class: "buttona"
 section.show-comment
   h2.title Comments:(0)
 

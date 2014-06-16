@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :order_lines
   resources :categories
+  resources :comments
   resources :search, only: :index
 
   post "books/rating"
