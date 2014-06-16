@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
       update_attribute(:login_count, 0)
     else
       increment!(:login_count)
+      save!
     end
     login_count >= Integer(ENV['MAX_LOGIN_ATTEMPTS'])
   end

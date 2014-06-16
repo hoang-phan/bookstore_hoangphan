@@ -4,6 +4,8 @@ describe BooksController do
   let (:book) { FactoryGirl.create(:book) }
   let (:book1) { FactoryGirl.create(:book, title: "xykeyword") }
   let (:book2) { FactoryGirl.create(:book, author_name: "keywordyz") }
+  let (:user) { FactoryGirl.create(:user) }
+  let (:order) { FactoryGirl.create(:order, user_id: user.id) }
 
   context "index" do
     it "should set @books" do
@@ -28,12 +30,6 @@ describe BooksController do
   context "change_per_page" do
     it "should post change_per_page @books" do
       post :change_per_page, per_page: 8
-    end
-  end
-
-  context "destroy" do
-    it "should destroy @book" do
-      delete :destroy, id: book.id
     end
   end
 end

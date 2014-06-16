@@ -28,13 +28,4 @@ class BooksController < ApplicationController
       format.json { render :books, status: :change_per_page, location: books_path }
     end
   end
-
-  def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-    respond_to do |format|
-      format.html { redirect_to books_path }
-      format.json { render :books, status: :destroy, location: books_path }
-    end
-  end
 end

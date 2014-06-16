@@ -2,6 +2,7 @@ module CurrentOrder
   extend ActiveSupport::Concern
 
   def set_order
+    return unless current_user
     begin
       @order = Order.find(session[:order_id])
     rescue ActiveRecord::RecordNotFound

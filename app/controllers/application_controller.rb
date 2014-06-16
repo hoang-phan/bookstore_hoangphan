@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :get_global_variables
+  before_action :set_global_variables
   include CurrentOrder
   before_action :set_order
 
@@ -25,8 +25,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_global_variables
+  def set_global_variables
     @categories = Category.order('sort_order DESC')
   end
 
+  def current_order
+    @order
+  end
 end
