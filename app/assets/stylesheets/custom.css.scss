@@ -613,6 +613,7 @@ footer {
     margin: 25px;
     border: 1px solid lightgray;
     background: #eee;
+    width: 760px;
     p {
       font-size: 15px;
     }
@@ -687,5 +688,21 @@ footer {
       display: inline-block;
     }
   }
+}
+
+//.............
+//order
+
+.cancel {
+  margin: 25px;
+  width: 600px;
+}
+
+.visible {
+  display: block;
+}
+
+.adjust-menu {
+  width: 1300px;
 }
 

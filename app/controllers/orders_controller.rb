@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  def index
+  end
+
   def create
     @order = Order.new(order_params)
 
@@ -13,6 +16,21 @@ class OrdersController < ApplicationController
     end
   end
 
+  def edit
+    @showcart = true
+  end
+
+  def update
+    @order = Order.find(params[:id])
+
+    if @order.update_attributes(order_params)
+      session[:order_id] = Order.create.id
+      redirect_to books_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @order.destroy
     respond_to do |format|
@@ -24,6 +42,6 @@ class OrdersController < ApplicationController
   private
 
     def order_params
-      params.require(:order).permit(:id, :shipping_address)
+      params.require(:order).permit(:shipping_address, :order_date)
     end
 end
