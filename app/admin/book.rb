@@ -3,6 +3,7 @@ ActiveAdmin.register Book do
   index do
     column :title
     column :description
+    actions
   end
 
   filter :title
