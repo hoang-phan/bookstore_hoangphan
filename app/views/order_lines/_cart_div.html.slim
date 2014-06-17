@@ -1,0 +1,32 @@
+li.cart-div-title
+  span.detail Book detail
+  span.quantity Quantity
+  span.price Price
+- delivery = 0
+- delivery = 5 if @order.order_lines.count > 0
+- @order.order_lines.each do |item|
+  li.cart-item
+    .detail
+      h3.cart-title= item.book.title
+      h3.cart-author= item.book.author_name
+    .quantity
+      = form_for(item, method: :patch) do |f|
+        = f.number_field :quantity
+        = link_to("#", class: "submit-quantity") do
+          i.glyphicon.glyphicon-ok-sign
+      = link_to content_tag(:i, "", class: "glyphicon glyphicon-trash"), item, method: :delete, remote: true, class: "delete-item"
+    .price
+      h3.price &#36;#{ item.total_price.round(1) }
+
+li.subtotal
+  span.detail
+  span.quantity SUBTOTAL
+  span.price &#36;#{ @order.total_price.round(1) }
+li.delivery
+  span.detail
+  span.quantity delivery
+  span.price &#36;#{ delivery.round(1) }
+li.total
+  span.detail
+  span.quantity TOTAL
+  span.price &#36;#{ (@order.total_price + delivery).round(1) }

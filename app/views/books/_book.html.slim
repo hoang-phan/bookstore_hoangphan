@@ -1,0 +1,24 @@
+li.pull-left
+  p= image_tag book.photo, width: 150, height: 220
+  p.book-title
+    = link_to book.title, book_path(book)
+  p.book-author
+    | by &nbsp;
+    = book.author_name
+  p
+  - stars = 0
+  - stars = (book.total_rating_value / book.total_rating_count) if book.total_rating_count > 0
+  - stars.times do
+    = image_tag "star-active.png"
+  - (5 - stars).times do
+    = image_tag "star-inactive.png"
+  p.book-description= book.description
+  p.book-price
+    span.price
+      = book.unit_price
+      | &nbsp;$
+    = link_to(order_lines_path(order_line: { book_id: book.id }), method: :post, remote: true, class: "buttona add-to-cart") do
+      span.hidden= book.id
+      span Add &nbsp;
+      span
+        = image_tag "cart.png", width: 40, height: 30

@@ -1,0 +1,20 @@
+- provide(:title, "Edit order")
+h2.title1 Checkout
+p.guide Fill the information below
+= form_for @order do |f|
+  .form-div
+    .form-div-title Delivery Information
+    .form-div-content
+      br
+      div
+        = f.label :shipping_address
+        = f.text_field :shipping_address
+      br
+      div
+        = f.label :order_date
+        = f.text_field :order_date
+  span.cancel= link_to "Cancel", "#"
+  = f.submit "Confirm order", class: "buttona"
+.adjust-height
+.adjust-height
+

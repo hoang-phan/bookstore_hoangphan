@@ -1,0 +1,14 @@
+header.navbar.navbar-fixed-top.navbar-inverse
+  .navbar-inner
+    a.brand href="/" rel="home" title=("Book Depositories")
+      span.black bookstore
+      span.white .com
+    .container
+      ul.nav.pull-right
+        - unless user_signed_in?
+          li= link_to "login", new_user_session_path, class: "has_arrow_down"
+          li |
+          li= link_to "register", new_user_registration_path
+        - else
+          li= link_to "logout", destroy_user_session_path, method: "delete"
+          li= link_to "settings", edit_user_registration_path

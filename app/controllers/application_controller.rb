@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :set_global_variables
+  include CurrentOrder
+  before_action :set_order
+
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
 
   protected
@@ -19,5 +23,13 @@ class ApplicationController < ActionController::Base
         |u| u.permit(registration_params)
       }
     end
+  end
+
+  def set_global_variables
+    @categories = Category.order('sort_order DESC')
+  end
+
+  def current_order
+    @order
   end
 end

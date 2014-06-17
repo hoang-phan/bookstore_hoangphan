@@ -1,4 +1,8 @@
 class SessionsController < Devise::SessionsController
+  prepend_before_filter :require_no_authentication, only: [ :create ]
+  include CurrentOrder
+  after_action :set_order, only: [ :create ]
+
   def new
     super
   end
@@ -12,4 +16,5 @@ class SessionsController < Devise::SessionsController
       super
     end
   end
+
 end

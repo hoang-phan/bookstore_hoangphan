@@ -13,10 +13,10 @@ describe "BookPages" do
       before(:all) { 30.times { FactoryGirl.create(:book) } }
       after(:all)  { Book.delete_all }
 
-      it { should have_selector('div.pagination') }
+      it { should have_selector('nav.pagination') }
 
       it "should list each book" do
-        Book.paginate(page: 1, per_page: 5).each do |book|
+        Book.page(1).per(8).each do |book|
           expect(page).to have_content(book.title)
         end
       end

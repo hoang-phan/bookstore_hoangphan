@@ -1,0 +1,15 @@
+- unless @showcart
+  = form_tag search_index_path, method: "get", id: "search-top" do
+    = text_field_tag :search, params[:search], placeholder: "author, title"
+    = hidden_field_tag :category_id, "-1"
+    = link_to content_tag(:i, "" ,class: "glyphicon glyphicon-search"), "#" ,id: "search-button"
+  #category-search.dropdown-toggle.has_arrow_down data-toggle="dropdown"
+    span | all categories
+  ul#search-menu.dropdown-menu role="menu"
+    - @categories.each do |category|
+      li
+        span.value= category.name
+        span.hidden= category.id
+    li
+      span.value All categories
+      span.hidden -1

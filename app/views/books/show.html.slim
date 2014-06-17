@@ -1,0 +1,63 @@
+- provide(:title, "Book #{@book.title}")
+section.info
+  .span6
+    = image_tag @book.photo
+  .span2
+    h2.book-title= @book.title
+    p.book-author
+      | by &nbsp;
+      = @book.author_name
+    p
+      - stars = 0
+      - stars = (@book.total_rating_value * 1.0 / @book.total_rating_count).round if @book.total_rating_count > 0
+      - stars.times do
+        = image_tag "star-active.png"
+      - (5 - stars).times do
+        = image_tag "star-inactive.png"
+      span.rate-count &#40; #{@book.total_rating_count} &#41;
+    p.book-description= @book.description
+    p.publish
+      | Publisher:&nbsp;
+      = @book.publisher_name
+      br
+      | Published date:&nbsp;
+      = @book.published_date
+  .span7
+    .book-price
+      p.price
+        = @book.unit_price
+        | &nbsp;$
+      p.sale
+        | Save 20%
+        br
+        | Original $$$
+      br
+
+      p.button-cart
+        a.buttona href="#"
+          span Add &nbsp;
+          span= image_tag "cart.png", width: 40, height: 30
+  .clear
+section.add-comment
+  h2.title Add your comment
+  p#rating-stars
+  - 5.times do |n|
+    = image_tag "star-inactive.png", class: "rating-star"
+  p
+    = form_for :comment, url: comments_path, method: :post do |f|
+      = f.hidden_field :rating, value: 0
+      = f.hidden_field :book_id, value: @book.id
+      = f.text_area :content
+      br
+      span= link_to "Cancel", "#"
+      = f.submit "Send", class: "buttona"
+section.show-comment
+  h2.title Comments &#40; #{@book.comments.count} &#41;
+  ul.comments
+    - @book.comments.each do |comment|
+      li.comment
+        h3.comment-title= comment.user.full_name
+        p.comment-content= comment.content
+        p.comment-submitted Submitted on #{ comment.created_at.strftime('%a %B %e at %l:%M %p') }
+
+
