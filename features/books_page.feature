@@ -32,6 +32,8 @@ Feature:  In Books page
     Then I should see content "Shopping cart"
     When I click image link ".quantity a"
     Then I should see content "Shopping cart"
+    When I click image link ".delete-item"
+    Then I should see content "Shopping cart"
     When I click link "Checkout"
     And I fill in "Order date" with "Invalid"
     And I click button "Confirm order"

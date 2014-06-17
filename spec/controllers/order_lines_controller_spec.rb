@@ -23,6 +23,13 @@ describe OrderLinesController do
     end
   end
 
+  context "update" do
+    it "should update @order_line" do
+      patch :update, id: order_line.id, order_line: { quantity: 4 }
+      expect(OrderLine.find(order_line.id).quantity).to eq(4)
+    end
+  end
+
   context "delete" do
     it "should delete @order_line" do
       xhr :delete, :destroy, id: order_line.id
