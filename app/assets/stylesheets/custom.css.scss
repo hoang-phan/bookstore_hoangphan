@@ -57,6 +57,10 @@ a, a:hover, a:visited {
   left: 20px;
 }
 
+.content {
+  margin: 30px;
+}
+
 // header
 // .........
 .has_arrow_down {
@@ -70,6 +74,7 @@ a, a:hover, a:visited {
   top: 80px;
   background: $light_header;
   height: 70px;
+  z-index: 100;
 }
 
 .navbar-inverse {
@@ -837,7 +842,9 @@ footer {
   }
 }
 
-
+.edit_order_line {
+  display: inline-block;
+}
 
 
 

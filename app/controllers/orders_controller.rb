@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update_attributes(order_params)
-      session[:order_id] = Order.create.id
+      session[:order_id] = Order.create(user_id: current_user.id).id
       redirect_to books_path
     else
       render 'edit'

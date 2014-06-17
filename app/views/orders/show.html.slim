@@ -1,13 +1,16 @@
 - provide(:title, "Order information: #{@order.order_date}")
-h2.title Order Information
-p.guide #{ @order.order_date } to #{ @order.shipping_address }
-- @order.order_lines.each do |item|
-  p
-    span= item.book.title
-    span &nbsp;x #{ item.quantity }
-p
-  span Total: $
-  span= @order.total_price
+.content
+  h2.title Order Information
+  p.guide #{ @order.order_date } to #{ @order.shipping_address }
+
+  ul
+  - @order.order_lines.each do |item|
+    li
+      span= item.book.title
+      span &nbsp;x #{ item.quantity }
+  li
+    span Total (not include delivery): $
+    span= @order.total_price
 .adjust-height
 .adjust-height
 .adjust-height
