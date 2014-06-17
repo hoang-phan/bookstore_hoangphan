@@ -11,16 +11,6 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def rating
-    rating = Integer(params[:rating])
-    book = Book.find(params[:book_id])
-    book.add_rating(rating)
-    respond_to do |format|
-      format.html { redirect_to book }
-      format.json { render :show, status: :rating, location: book }
-    end
-  end
-
   def change_per_page
     session[:per_page] = params[:per_page]
     respond_to do |format|

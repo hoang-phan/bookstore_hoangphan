@@ -1,4 +1,8 @@
 $(function(){
+  setTimeout(function(){
+    $('.alert').remove();
+  }, 5000);
+
   $("#per-page").val($("#tag-per-page").val());
 
   $(".rating-star").hover(function(){

@@ -310,6 +310,17 @@ input#search {
 //.........
 
 // page head
+
+.alert {
+  position: absolute;
+  top: 200px;
+  left: 130px;
+  width: 700px;
+}
+
+.alert-notice { background: #ccffcc; }
+.alert-error { background: #ffcccc; }
+
 .page-head {
   margin: 40px 0 40px 28px;
   text-align: left;
@@ -560,6 +571,29 @@ input {
   margin: 0 30px 0 0;
 }
 
+.comments {
+  list-style: none;
+  padding: 0;
+  .comment {
+    border-bottom: 1px dotted lightgray;
+    padding: 10px 0;
+    .comment-title {
+      color: $add_light;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .comment-content {
+      font-size: 12px;
+    }
+    .comment-submitted {
+      font-size: 12px;
+      color: gray;
+    }
+  }
+}
+
+
+
 // .................
 
 //footer
@@ -705,4 +739,105 @@ footer {
 .adjust-menu {
   width: 1300px;
 }
+
+//..................
+//checkout cart
+.cart-top {
+  margin: 30px;
+  .title {
+    font-size: 15px;
+    color: $add_light;
+    width: 1350px;
+  }
+  .link a {
+    font-size: 13px;
+    color: $cart;
+  }
+  .cancel {
+    width: 1280px;
+    a {
+      font-size: 14px;
+      color: $cart;
+    }
+  }
+}
+
+.cart-div {
+  border: 1px solid lightgray;
+  margin: 30px;
+  padding: 0;
+  list-style: none;
+  li {
+    padding: 10px 20px;
+  }
+  .detail {
+    width: 800px;
+    display: inline-block;
+  }
+  div.quantity {
+    padding-bottom: 15px;
+  }
+  .quantity {
+    width: 300px;
+    display: inline-block;
+    vertical-align: middle;
+    input {
+      width: 50px;
+      border-radius: 0;
+    }
+  }
+
+  .price {
+    display: inline-block;
+    width: 300px;
+    text-align: right;
+    h3 {
+      color: $cart;
+      font-size: 17px;
+    }
+  }
+
+  .cart-div-title {
+    width: 100%;
+    padding: 20px;
+    background: gray;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .cart-item {
+    h3 {
+      line-height: 0;
+      font-size: 13px;
+      text-transform: uppercase;
+      padding: 0;
+    }
+    .cart-title {
+      color: $add_dark;
+    }
+    &:nth-child(odd) {
+      background: #eeeeee;
+    }
+    &:nth-child(even) {
+      background: #fdfdfd;
+    }
+  }
+  .subtotal,.delivery,.total{
+    font-size: 18px;
+    .price {
+      color: $add_light;
+    }
+  }
+  .subtotal {
+    border-bottom: 1px dotted #dddddd;
+  }
+  .total > .price {
+    font-size: 20px;
+  }
+}
+
+
+
+
 

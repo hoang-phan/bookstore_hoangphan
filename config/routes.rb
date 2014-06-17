@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :search, only: :index
 
-  post "books/rating"
   post "books/change_per_page"
 
   root 'static_pages#home'
