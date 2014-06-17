@@ -28,6 +28,7 @@ gem 'sprockets'
 gem "recaptcha"
 gem 'devise'
 gem "devise-async"
+gem 'will_paginate'
 
 group :development, :test do
   gem 'factory_girl_rails'

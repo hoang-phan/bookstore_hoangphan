@@ -7,9 +7,9 @@ def sign_up(user)
   fill_in "Phone", with: user.phone
 end
 
-def sign_in(user, options={})
+def sign_in(user, password=user.password)
   visit new_user_session_path
   fill_in "Email",    with: user.email
-  fill_in "Password", with: user.password
+  fill_in "Password", with: password
   click_button "Sign in"
 end

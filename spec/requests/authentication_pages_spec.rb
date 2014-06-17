@@ -20,37 +20,32 @@ describe "AuthenticationPages" do
 
       describe "invalid combination" do
         before do
-          user.password = "Wrongpass"
-          sign_in user
+          sign_in(user, "Wrongpass")
         end
 
         it { should have_content("Sign in") }
       end
 
       describe "consecutive failed login" do
-        let(:correct_password) { user.password }
+
         before do
-          user.password = "Wrongpass"
           maxlogin = Integer(ENV['MAX_LOGIN_ATTEMPTS'])
-          maxlogin.times { sign_in user }
+          maxlogin.times { sign_in(user, "Wrongpass") }
         end
 
         # captcha shown
         it { should have_content("You have failed more than") }
 
-        it "should be captcha verified" do
-          # even if user name and password are correct
-          user.password = correct_password
+        it "should verify captcha" do
+          SessionsController.any_instance.stub(:verify_recaptcha) { false }
           sign_in user
-          # if not enter captcha (a.k.a captcha verification failed)
-
-          # not logged in
-          page.should have_content("Sign in")
+          expect(page).to have_content("Sign in")
         end
+
       end
     end
 
-    describe "valid sigin" do
+    describe "valid sign in" do
       before { sign_in user }
 
       it { should have_title("Welcome") }

@@ -1,17 +1,26 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
-      <a href="/" title="Book Depositories" rel="home" class="brand">Book Depositories</a>
+      <a href="/" title="Book Depositories" rel="home" class="brand">
+        <span class="black">bookstore</span><span class="white">.com</span>
+      </a>
       <div class="container">
         <ul class="nav pull-right">
-          <li><%= link_to "Home", "/" %></li>
           <% unless user_signed_in? %>
-          <li><%= link_to "Login", new_user_session_path %></li>
+          <li><%= link_to "login", new_user_session_path, class: "has_arrow_down" %></li>
+          <li>|</li>
+          <li><%= link_to "register", new_user_registration_path %></li>
           <% else %>
-          <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
-          <li><%= link_to "Settings", edit_user_registration_path %></li>
+          <li><%= link_to "logout", destroy_user_session_path, method: "delete" %></li>
+          <li><%= link_to "settings", edit_user_registration_path %></li>
           <% end %>
-          <li><%= link_to "Search", "#" %></li>
         </ul>
       </div>
     </div>
 </header>
+<div class="navbar navbar-search">
+  <form id="search-top">
+    <input id="search-top-input" name="search-top-input" type="text" placeholder="author, title">
+    <input type="hidden" name="search-top-category">
+    <div class="search-top-category has_arrow_down"></div>
+  </form>
+</div>

@@ -1,0 +1,161 @@
+@import "bootstrap";
+
+$light_header: #62594f;
+$dark_header: #5b4635;
+$cart: #00a099;
+$price: #f29100;
+$add_light: #ffc400;
+$add_dark: #fdb62b;
+
+
+
+body {
+  font-family: "OpenSans";
+  background-size: 100%;
+}
+
+// header
+// .........
+.has_arrow_down {
+  background: image_url('arrow-down.png') no-repeat;
+  background-position: right 10px;
+}
+
+.navbar-search {
+  position: fixed;
+  width: 100%;
+  top: 80px;
+  background: $light_header;
+  height: 70px;
+}
+
+.navbar-inverse {
+  background: image_url('banner.jpg');
+  border: none;
+  height: 80px;
+}
+
+.nav {
+  margin: 20px 150px 10px 10px;
+  li {
+    display: inline-block;
+    border: none;
+    a {
+      font-size: 14px;
+      font-weight: bold;
+      color: black;
+
+      &:hover {
+        background: none;
+      }
+
+
+    }
+    .has_arrow_down {
+      padding-right: 30px;
+      &:hover {
+        background: image_url('arrow-down.png') no-repeat;
+        background-position: right 10px;
+      }
+    }
+  }
+}
+
+
+
+.brand {
+  font-size: 38px;
+  font-weight: 800;
+  margin: 10px 0 0 150px;
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  .white { color: white }
+  .black { color: black }
+  &:hover { text-decoration: none }
+}
+
+#search-top {
+  padding: 8px;
+}
+
+#search-top-input {
+  width: 500px;
+  padding: 8px 200px 10px 20px;
+  margin-left: 140px;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+#search-top-category {
+  position: absolute;
+  padding: 8px 0px 10px 10px;
+  left: 500px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+//.........
+
+#content {
+  margin-top: 200px;
+}
+
+#content1 {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.jumbotron {
+  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.9);
+}
+
+h1, p {
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -5px;
+}
+
+.btn-large {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+#new_user {
+  display: inline-block;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.hero-unit {
+  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.9);
+  width: 450px;
+  padding: 25px;
+  border-radius: 10px;
+  float: left;
+  margin-left: 50px;
+}
+
+.hero-unit1 {
+  background: none;
+  color: blue;
+  width: 700px;
+  padding: 25px;
+  border-radius: 10px;
+  float: left;
+  margin-left: 50px;
+}
+
+.container {
+  width: 95%;
+}
