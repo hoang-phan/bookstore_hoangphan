@@ -36,27 +36,4 @@ $(function(){
     $("#search-top").submit();
   });
 
-  $(".add-to-cart").click(function(){
-    $.post("/order_lines", { order_line: { book_id: $(this).find(".hidden").html() } }, function(o) {
-      book = o['book'];
-      if (o['is_new']) {
-        title_span = "<span class='title'>" + book['title'] + "</span>";
-        amount_span = "<span class='amount'>1</span>";
-        price_span = "<span class='price'>$" + book['unit_price'] + "</span>";
-
-        $("#cart-menu").prepend("<li id='cart-book-" + book['id'] + "'>" + title_span + amount_span + price_span + "</li>");
-      } else {
-        li_book = $("#cart-book-" + book['id']);
-        li_book.find(".amount").html(o["amount"]);
-        li_book.find(".price").html("$" + o["total_price"]);
-      }
-
-      subtotal = parseFloat(o["subtotal"]);
-      total = subtotal + 5;
-
-      $(".value-subtotal").html( "$" +  subtotal.toFixed(1) );
-      $(".value-total").html( "$" + total.toFixed(1) );
-      $(".cart-count").html( o["quantity"] );
-    });
-  });
 });

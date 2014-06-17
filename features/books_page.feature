@@ -27,10 +27,26 @@ Feature:  In Books page
     Then I should see content "1"
     When I click image link ".add-to-cart"
     Then I should see content "2"
-    When I click image link "#cart"
-    And I click button "Checkout"
+    When I click button "Checkout"
     And I click link "Modify order"
     Then I should see content "Shopping cart"
+    When I click image link ".quantity a"
+    Then I should see content "Shopping cart"
+    When I click link "Checkout"
+    And I fill in "Order date" with "Invalid"
+    And I click button "Confirm order"
+    Then I should see content "Checkout"
+    When I fill in "Order date" with "22/01/1992"
+    And I click button "Confirm order"
+    Then I should see title "All books"
+    When I am on the orders page
+    Then I should see title "Your past orders"
+    When I click image link ".jumbotron a"
+    Then I should see title "Order information"
+    When I click image link "#cart"
+    And I click button "Empty cart"
+    And I confirm
+    Then I should see content "0"
 
   Scenario: Show category
     Given I have a book
