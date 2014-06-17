@@ -27,6 +27,10 @@ Feature:  In Books page
     Then I should see content "1"
     When I click image link ".add-to-cart"
     Then I should see content "2"
+    When I click image link "#cart"
+    And I click button "Checkout"
+    And I click link "Modify order"
+    Then I should see content "Shopping cart"
 
   Scenario: Show category
     Given I have a book
@@ -41,9 +45,16 @@ Feature:  In Books page
 
   @javascript
   Scenario: Show book
-    Given I have a book
+    Given I am on the new_user_session page
+    And I have a book
+    And I have a user
+    When I sign in
     And I am on the books page
     When I click image link ".book-title a"
     Then I should see content "Save 20%"
-    When I click image link ".rating-star"
+    When I fill in "comment_content" with "Some content"
+    And I click button "Send"
+    Then I should see content "Save 20%"
+    When I fill in "comment_content" with "Some content"
+    And I click button "Send"
     Then I should see content "Save 20%"

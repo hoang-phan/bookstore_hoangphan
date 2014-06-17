@@ -52,6 +52,12 @@ section.add-comment
       span= link_to "Cancel", "#"
       = f.submit "Send", class: "buttona"
 section.show-comment
-  h2.title Comments:(0)
+  h2.title Comments &#40; #{@book.comments.count} &#41;
+  ul.comments
+    - @book.comments.each do |comment|
+      li.comment
+        h3.comment-title= comment.user.full_name
+        p.comment-content= comment.content
+        p.comment-submitted Submitted on #{ comment.created_at.strftime('%a %B %e at %l:%M %p') }
 
 

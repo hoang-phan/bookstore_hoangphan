@@ -37,7 +37,7 @@ button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
     li
       span.title
       span.amount
-      span.price= link_to "Modify order"
+      span.price= link_to "Modify order", order_lines_path
 - else
   ul#cart-menu.dropdown-menu role="menu"
     - if @order
