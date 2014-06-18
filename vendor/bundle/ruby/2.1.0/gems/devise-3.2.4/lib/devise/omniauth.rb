@@ -26,3 +26,4 @@ module Devise
     autoload :UrlHelpers,  "devise/omniauth/url_helpers"
   end
 end
+

@@ -33,6 +33,7 @@ gem "devise-async"
 gem "kaminari"
 gem 'progress_bar'
 gem 'pg_search'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'factory_girl_rails'
