@@ -31,3 +31,14 @@ Feature:  In Sign in page
     Then I should see link "logout"
     And I should not see content "Sign in"
 
+  @javascript
+  @omniauth_fail
+  Scenario: Login with facebook
+    Given I am signed in with provider "Facebook"
+    Then I should see content "Sign in"
+
+  @javascript
+  @omniauth_test
+  Scenario: Login with facebook success
+    Given I am signed in with provider "Facebook"
+    Then I should see link "logout"

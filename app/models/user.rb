@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :async,
          :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :orders
   has_many :comments
@@ -16,4 +17,24 @@ class User < ActiveRecord::Base
     end
     login_count >= Integer(ENV['MAX_LOGIN_ATTEMPTS'])
   end
+
+  def self.find_for_facebook_oauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_create do |user|
+      user.provider = auth[:provider]
+      user.uid = auth[:uid]
+      user.email = auth[:info][:email]
+      user.password = Devise.friendly_token[0,20]
+      user.full_name = auth[:info][:name]
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"]
+        user.email = data["email"]
+        user.confirmed_at = Time.now
+      end
+    end
+  end
+
 end

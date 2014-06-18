@@ -62,6 +62,32 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Before('@omniauth_test') do
+  OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://example.com'
+
+  OmniAuth.config.mock_auth[:facebook] = {
+    provider: "facebook",
+    uid: "http://xxxx.com/openid?id=118181138998978630963",
+    info: { email: "test@xxxx.com", name: "Test" }
+  }
+end
+
+Before('@omniauth_fail') do
+  OmniAuth.config.test_mode = true
+  Capybara.default_host = 'http://example.com'
+
+  # OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+end
+
+After('@omniauth_fail') do
+  OmniAuth.config.test_mode = false
+end
+
+After('@omniauth_test') do
+  OmniAuth.config.test_mode = false
+end
+
 Before('@javascript') do
   window = Capybara.current_session.driver.browser.manage.window
   window.maximize

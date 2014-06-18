@@ -41,6 +41,10 @@ Given /^more than (\d+) hours passes$/ do |num|
   Timecop.freeze(Time.now + num.to_i.hours + 1.minute)
 end
 
+Given /^I am signed in with provider "(.*?)"$/ do |provider|
+  visit "/users/auth/#{provider.downcase}"
+end
+
 When /^I click button "(.*?)"$/ do |button|
   click_button(button)
 end

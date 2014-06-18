@@ -24,7 +24,7 @@ module CurrentOrder
 
   private
     def check_order
-      if session[:order_id] && session[:expires_at] < Time.now.to_i
+      if session[:order_id] && session[:expires_at].to_i < Time.now.to_i
         begin
           Order.destroy(session[:order_id])
         rescue

@@ -20,6 +20,16 @@ OmniAuth.config.on_failure = Proc.new do |env|
   controller_klass.action(:failure).call(env)
 end
 
+OmniAuth.config.test_mode = true
+OmniAuth.config.add_mock(:facebook, {
+  :uid => '12345',
+  :nickname => 'fooman',
+  :user_info => {
+    :first_name => 'Foo',
+  :last_name => 'Man'
+  }
+})
+
 module Devise
   module OmniAuth
     autoload :Config,      "devise/omniauth/config"
