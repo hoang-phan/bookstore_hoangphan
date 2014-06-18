@@ -20,6 +20,10 @@ h1, p {
   text-align: left;
 }
 
+.container {
+  width: 1850px;
+}
+
 h1 {
   font-size: 30px;
   font-weight: 600;
@@ -61,8 +65,16 @@ a, a:hover, a:visited {
   margin: 30px;
 }
 
+.wrap {
+  width: 1430px;
+  h1,a,p {
+    text-align: center;
+  }
+}
+
 // header
 // .........
+
 .has_arrow_down {
   background: image_url('arrow-down.png') no-repeat;
   background-position: right 10px;
@@ -112,9 +124,10 @@ a, a:hover, a:visited {
 
 
 .brand {
+  width: 316px;
   font-size: 38px;
   font-weight: 800;
-  margin: 25px 0 0 150px;
+  margin: 25px 0 0 162px;
   display: block;
   position: absolute;
   .white { color: white }
@@ -192,6 +205,7 @@ input#search {
 #search-menu {
   top: 42px;
   left: 451px;
+  width: 200px;
   border-top: none;
   border-radius: 0;
   padding: 11px;
@@ -327,7 +341,7 @@ input#search {
 .alert-error { background: #ffcccc; }
 
 .page-head {
-  margin: 40px 0 40px 28px;
+  margin: 40px 0 40px 0;
   text-align: left;
   color: $add_dark;
   display: block;
@@ -359,7 +373,7 @@ input#search {
 //content books
 
 #content1 {
-  margin: 100px 150px 0 90px;
+  margin: 100px 50px 0 90px;
 }
 
 .jumbotron {
@@ -367,7 +381,7 @@ input#search {
 }
 
 #show-books {
-  margin: 10px 0;
+  padding: 0;
   list-style: none;
   width: 100%;
   display: block;
@@ -568,10 +582,6 @@ input {
   margin-left: 50px;
 }
 
-.container {
-  width: 95%;
-}
-
 .pagination {
   margin: 0 30px 0 0;
 }
@@ -606,6 +616,9 @@ input {
 footer {
   background: $light_header;
   color: white;
+  position: absolute;
+  left: 0;
+  width: 1920px;
   h3 {
     font-size: 20px;
     font-weight: bold;
@@ -748,7 +761,7 @@ footer {
 //..................
 //checkout cart
 .cart-top {
-  margin: 30px;
+  margin: 30px 30px 30px 0;
   .title {
     font-size: 15px;
     color: $add_light;
@@ -769,7 +782,7 @@ footer {
 
 .cart-div {
   border: 1px solid lightgray;
-  margin: 30px;
+  margin: 30px 30px 30px 0;
   padding: 0;
   list-style: none;
   li {

@@ -58,7 +58,7 @@ button#cart.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
       span.title TOTAL
       span.amount
       span.value-total.price.big &#36;#{ total.round(1) }
-    - if @order
+    - if current_user
       li.button-group
         span.adjust1
         span= button_to "Checkout", edit_order_path(@order), method: :get, class: "buttona", id: "checkout-cart"

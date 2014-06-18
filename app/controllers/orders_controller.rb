@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where("user_id = ? AND id <> ?", current_user.id, session[:order_id])
   end
 
   def show

@@ -37,6 +37,10 @@ Given /^I visit the category page$/ do
   visit "categories/#{ @category.id }"
 end
 
+Given /^more than (\d+) hours passes$/ do |num|
+  Timecop.freeze(Time.now + num.to_i.hours + 1.minute)
+end
+
 When /^I click button "(.*?)"$/ do |button|
   click_button(button)
 end

@@ -8,8 +8,10 @@ Feature:  In Sign in page
     Then I should see content "Sign in"
 
   Scenario: Valid login and sign out
-    Given I am on the new_user_session page
+    Given I am on the books page
     And I have a user
+    And more than 3 hours passes
+    And I am on the new_user_session page
     When I sign in
     Then I should see content "Rock with us members"
     And I should see link "logout"
