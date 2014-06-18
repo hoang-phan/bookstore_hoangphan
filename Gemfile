@@ -34,6 +34,7 @@ gem "kaminari"
 gem 'progress_bar'
 gem 'pg_search'
 gem 'omniauth-facebook'
+gem 'social-share-button'
 
 group :development, :test do
   gem 'factory_girl_rails'
