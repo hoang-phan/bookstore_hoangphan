@@ -1,10 +1,12 @@
 - provide(:title, "Your past orders")
-.content
-  h2.title Your shopping history
-  ul
-    - @orders.each do |order|
-      li= link_to(order_path(order)) do
-        #{ order.order_date } to #{ order.shipping_address }
+.page-head
+  span.page-head-title Past orders
+  = paginate @orders
+ul.div-order
+  = render @orders
+.page-head
+  span.page-head-title
+  = paginate @orders
 
 .adjust-height
 .adjust-height

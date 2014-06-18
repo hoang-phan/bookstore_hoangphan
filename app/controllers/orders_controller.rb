@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update]
+
   def index
-    @orders = Order.where("user_id = ? AND id <> ?", current_user.id, session[:order_id])
+    @orders = Order.where("user_id = ? AND id <> ?", current_user.id, session[:order_id]).page(params[:page]).per(5)
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order1 = Order.find(params[:id])
   end
 
   def edit

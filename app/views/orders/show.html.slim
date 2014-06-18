@@ -1,17 +1,38 @@
 - provide(:title, "Order information: #{@order.order_date}")
-.content
-  h2.title Order Information
-  p.guide #{ @order.order_date } to #{ @order.shipping_address }
+h2.title Order Information
+p.guide #{ @order1.order_date } to #{ @order1.shipping_address }
 
-  ul
-  - @order.order_lines.each do |item|
-    li
-      span= item.book.title
-      span &nbsp;x #{ item.quantity }
-  li
-    span Total (not include delivery): $
-    span= @order.total_price
-.adjust-height
+ul.cart-div
+  li.cart-div-title
+    span.detail Book detail
+    span.quantity Quantity
+    span.price Price
+  - delivery = 0
+  - delivery = 5 if @order1.order_lines.count > 0
+  - @order1.order_lines.each do |item|
+    li.cart-item
+      .detail
+        h3.cart-title= item.book.title
+        h3.cart-author= item.book.author_name
+      .quantity
+        h3= item.quantity
+      .price
+        h3.price &#36;#{ item.total_price.round(1) }
+
+  li.subtotal
+    span.detail
+    span.quantity SUBTOTAL
+    span.price &#36;#{ @order1.total_price.round(1) }
+  li.delivery
+    span.detail
+    span.quantity delivery
+    span.price &#36;#{ delivery.round(1) }
+  li.total
+    span.detail
+    span.quantity TOTAL
+    span.price &#36;#{ (@order1.total_price + delivery).round(1) }
+p.cart-top
+  span.cancel= link_to "Back to past orders", orders_path
 .adjust-height
 .adjust-height
 .adjust-height

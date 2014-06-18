@@ -35,9 +35,11 @@ section.info
       br
 
       p.button-cart
-        a.buttona href="#"
+        = link_to(order_lines_path(order_line: { book_id: @book.id }), method: :post, remote: true, class: "buttona add-to-cart") do
+          span.hidden= @book.id
           span Add &nbsp;
-          span= image_tag "cart.png", width: 40, height: 30
+          span
+            = image_tag "cart.png", width: 40, height: 30
   .clear
 section.add-comment
   h2.title Add your comment

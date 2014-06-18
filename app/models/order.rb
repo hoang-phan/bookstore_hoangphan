@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+
+  belongs_to :user
+
   has_many :books, through: :order_lines
   has_many :order_lines, dependent: :destroy
   validate :order_date_is_date

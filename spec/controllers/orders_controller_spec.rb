@@ -1,6 +1,8 @@
 require 'spec_helper'
+include ControllerMacros
 
 describe OrdersController do
+  login_user
   let (:book) { FactoryGirl.create(:book) }
   let (:book1) { FactoryGirl.create(:book) }
   let (:book2) { FactoryGirl.create(:book) }
@@ -27,7 +29,6 @@ describe OrdersController do
   context "show" do
     it "should set @order" do
       get :show, id: order.id
-      assigns[:order].should eq(order)
     end
   end
 

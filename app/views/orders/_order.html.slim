@@ -1,0 +1,19 @@
+li.div-order-item
+  span.order-detail
+    h4= link_to "Order placed", order_path(order)
+    h3= order.order_date
+    br
+    p
+      | Recipient&#58; #{ order.user.full_name }
+      br
+      | Total: &nbsp;
+      span.price-total &#36; #{ order.total_price }
+  ul.order-books
+    - order.order_lines.each do |item|
+      li.book-item
+        span.book-detail
+          span.title= item.book.title
+          | &nbsp;by&nbsp;
+          span.author= item.book.author_name
+        span.book-count x #{ item.quantity }
+        span.price-total &#36;#{ item.total_price }

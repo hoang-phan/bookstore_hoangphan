@@ -758,6 +758,61 @@ footer {
   width: 1300px;
 }
 
+.div-order {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.div-order-item {
+  margin: 30px 0;
+  padding: 10px;
+  border: 1px solid lightgray;
+  span.price-total {
+      color: $cart;
+    }
+  .order-detail {
+    width: 300px;
+    vertical-align: top;
+    display: inline-block;
+    h3 {
+      line-height: 0;
+      font-size: 17px;
+    }
+    h4 {
+      font-size: 15px
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+  .order-books {
+    list-style: none;
+    width: 1200px;
+    display: inline-block;
+    .book-item {
+      padding: 5px;
+      &:nth-child(odd) { background: #eeeeee }
+      &:nth-child(even) { background: white }
+    }
+    .book-detail {
+      width: 50%;
+      .title,.author {
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: normal;
+      }
+    }
+    .book-count {
+      width: 10%;
+    }
+    .price-total {
+      width: 35%;
+      text-align: right;
+    }
+  }
+}
+
 //..................
 //checkout cart
 .cart-top {

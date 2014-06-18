@@ -6,7 +6,6 @@ module ControllerMacros
       user = FactoryGirl.create(:user)
       user.confirm!
       sign_in user
-      user
     end
   end
 end
