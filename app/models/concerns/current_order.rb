@@ -9,7 +9,7 @@ module CurrentOrder
       if current_user
         @order = Order.create(user_id: current_user.id)
         session[:order_id] = @order.id
-        session[:expires_at] = 30.days.from_now.to_i
+        session[:expires_at] = 2.years.from_now.to_i
       else
         session[:order_id] = Order.create.id
         session[:expires_at] = 3.hours.from_now.to_i
@@ -18,8 +18,10 @@ module CurrentOrder
   end
 
   def attach_order_to_user
-    current_user.orders << Order.find(session[:order_id])
-    session[:expires_at] = 30.days.from_now.to_i
+    if current_user
+      current_user.orders << Order.find(session[:order_id])
+      session[:expires_at] = 2.years.from_now.to_i
+    end
   end
 
   private
