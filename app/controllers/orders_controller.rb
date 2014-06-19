@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
 
     if @order.update_attributes(order_params)
-      session[:order_id] = Order.create(user_id: current_user.id).id
-      redirect_to @order.paypal_url(books_url)
+      session[:order_id] = current_user.orders.create.id
+      redirect_to express_checkout
     else
       render 'edit'
     end
@@ -36,5 +36,21 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:shipping_address, :order_date)
+    end
+
+    def express_checkout
+      items = @order.order_lines.map { | item | {
+        name: item.book.title, description: item.book.author_name,
+        quantity: "#{item.quantity}", amount: item.book.unit_price * 100
+        } }
+      response = EXPRESS_GATEWAY.setup_purchase(@order.total_price * 100,
+        ip: request.remote_ip,
+        return_url: books_url,
+        cancel_return_url: books_url,
+        currency: "USD",
+        allow_guest_checkout: true,
+        items: items
+      )
+      EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
 end

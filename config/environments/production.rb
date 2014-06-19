@@ -92,4 +92,6 @@ Rails.application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
+  config.stripe.publishable_key = 'pk_live_XTnyuZi7ekRFbGN7TvyyJoes'
+
 end

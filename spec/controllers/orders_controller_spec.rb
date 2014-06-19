@@ -12,9 +12,9 @@ describe OrdersController do
   let (:order2) { FactoryGirl.create(:order, user_id: user2.id) }
 
   before do
-    order.order_lines.create(book_id: book1)
-    order.order_lines.create(book_id: book2)
-    order2.order_lines.create(book_id: book)
+    order.order_lines.create(book_id: book1.id)
+    order.order_lines.create(book_id: book2.id)
+    order2.order_lines.create(book_id: book.id)
     subject.stub(:current_user) { user }
   end
 
@@ -41,8 +41,9 @@ describe OrdersController do
 
   context "update" do
     it "should update @order" do
+      subject.stub(:express_checkout).and_return(books_path)
       put :update, id: order.id, order: { shipping_address: "Some address" }
-      expect(response).to redirect_to books_path
+      response.should redirect_to(books_path)
     end
 
     it "should fail if any attribute is invalid" do

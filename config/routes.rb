@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :comments
   resources :search, only: :index
+  resources :charges
 
   post "books/change_per_page"
 

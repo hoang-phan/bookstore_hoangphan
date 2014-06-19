@@ -29,23 +29,4 @@ class Order < ActiveRecord::Base
   def order_date_is_date
     errors.add(:order_date, "is invalid") unless Chronic.parse(order_date)
   end
-
-  def paypal_url(return_url)
-    values = {
-      :business => 'hoangphanbk10@gmail.com',
-      :cmd => '_cart',
-      :upload => 1,
-      :return => return_url,
-      :invoice => id
-    }
-    order_lines.each_with_index do |item, index|
-      values.merge!({
-        "amount_#{index+1}" => item.book.unit_price,
-        "item_name_#{index+1}" => item.book.title,
-        "item_number_#{index+1}" => item.id,
-        "quantity_#{index+1}" => item.quantity
-      })
-    end
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
-  end
 end

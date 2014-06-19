@@ -34,16 +34,28 @@ Feature:  In Books page
     Then I should see content "Shopping cart"
     When I click image link ".delete-item"
     Then I should see content "Shopping cart"
-    When I click link "Checkout"
-    And I fill in "Order date" with "Invalid"
+    And I click image link "#cart"
+    And I click button "Checkout"
+    And I fill in "Order date" with "xxxxxxxxxxxx"
     And I click button "Confirm order"
     Then I should see content "Checkout"
-    When I fill in "Order date" with "22/01/1992"
+
+  @javascript
+  Scenario: Checkout
+    Given I am on the new_user_session page
+    And I have a user
+    And I have a book
+    When I sign in
+    Given I am on the books page
+    When I click image link ".add-to-cart"
+    And I click image link ".add-to-cart"
+    And I click image link "#cart"
+    And I click button "Checkout"
     And I click button "Confirm order"
-    Then I should see title "All books"
+    Then I should see content "2"
     When I am on the orders page
     Then I should see title "Your past orders"
-    When I click image link ".jumbotron a"
+    When I click image link ".order-detail h4 a"
     Then I should see title "Order information"
     When I click image link "#cart"
     And I click button "Empty cart"

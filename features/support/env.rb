@@ -36,6 +36,15 @@ ActionController::Base.allow_rescue = false
 
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
+
+ActiveMerchant::Billing::Base.mode = :test
+paypal_options = {
+  login: "hoangphanbk10-facilitator_api1.gmail.com",
+  password: "1403152227",
+  signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AeYBvz2IOq7Jd2QrBjkS-padZcq0"
+}
+EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
+
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError

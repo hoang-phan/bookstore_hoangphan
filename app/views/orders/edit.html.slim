@@ -15,6 +15,8 @@ p.guide Fill the information below
         = f.text_field :order_date
   span.cancel= link_to "Cancel", "#"
   = f.submit "Confirm order", class: "buttona"
+p= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), order_path(@order), method: :put)
+
 .adjust-height
 .adjust-height
 

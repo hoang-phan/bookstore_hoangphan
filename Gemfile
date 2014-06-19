@@ -35,6 +35,8 @@ gem 'progress_bar'
 gem 'pg_search'
 gem 'omniauth-facebook'
 gem 'social-share-button'
+gem 'activemerchant'
+gem 'active_utils'
 
 group :development, :test do
   gem 'factory_girl_rails'
