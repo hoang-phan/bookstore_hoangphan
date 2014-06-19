@@ -20,3 +20,6 @@
 
 #ignore .idea
 /.idea
+
+#ignore bundle
+/vendor/bundle
