@@ -41,14 +41,20 @@ describe OrdersController do
 
   context "update" do
     it "should update @order" do
-      subject.stub(:express_checkout).and_return(books_path)
-      put :update, id: order.id, order: { shipping_address: "Some address" }
-      response.should redirect_to(books_path)
+      Order.any_instance.stub(:purchase).and_return(true)
+      patch :update, id: order.id, order: { shipping_address: "Some address" }
+      response.should redirect_to(orders_success_path)
+    end
+
+    it "should not update @order" do
+      Order.any_instance.stub(:purchase).and_return(false)
+      patch :update, id: order.id, order: { shipping_address: "Some address" }
+      response.should redirect_to(orders_failure_path)
     end
 
     it "should fail if any attribute is invalid" do
-      put :update, id: order.id, order: { order_date: "xxxyyyy" }
-      expect(response).not_to redirect_to books_path
+      patch :update, id: order.id, order: { order_date: "xxxyyyy" }
+      response.should_not redirect_to(orders_failure_path)
     end
   end
 
@@ -56,6 +62,23 @@ describe OrdersController do
     it "should delete @order" do
       delete :destroy, id: order.id
       expect(response).to redirect_to books_path
+    end
+  end
+
+  context "paypal" do
+    it "should update @order" do
+      Order.any_instance.stub(:purchase).and_return(true)
+      patch :paypal, id: order.id, order: { shipping_address: "Some address" }
+    end
+
+    it "should not update @order" do
+      Order.any_instance.stub(:purchase).and_return(false)
+      patch :paypal, id: order.id, order: { shipping_address: "Some address" }
+    end
+
+    it "should fail if any attribute is invalid" do
+      patch :paypal, id: order.id, order: { order_date: "xxxyyyy" }
+      response.should_not redirect_to(orders_failure_path)
     end
   end
 end

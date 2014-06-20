@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update]
 
   def index
-    @orders = Order.where("user_id = ? AND id <> ?",
-      current_user.id, session[:order_id]).page(params[:page]).per(5)
+    @orders = Order.where("user_id = ? AND id <> ?", current_user.id, session[:order_id])
+      .page(params[:page]).per(5)
   end
 
   def show
@@ -15,23 +15,17 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
-
-    if @order.update_attributes(order_params)
-      @order.ip_address = request.remote_ip
-      if @order.purchase
-        redirect_to orders_success_path
-      else
-        redirect_to orders_failure_path
-      end
-    else
+    if !@order.update_with_ip(order_params, request.remote_ip)
       render 'edit'
+    elsif @order.purchase
+      redirect_to orders_success_path
+    else
+      redirect_to orders_failure_path
     end
   end
 
   def paypal
-    if @order.update_attributes(order_params)
-      @order.ip_address = request.remote_ip
+    if @order.update_with_ip(order_params, request.remote_ip)
       items = @order.build_purchase
       redirect_to express_checkout(items)
     else

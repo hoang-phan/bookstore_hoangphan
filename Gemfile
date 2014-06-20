@@ -37,6 +37,10 @@ gem 'omniauth-facebook'
 gem 'social-share-button'
 gem 'activemerchant'
 gem 'active_utils'
+gem 'metamagic'
+gem 'friendly_id'
+gem 'sitemap_generator'
+gem "gretel"
 
 group :development, :test do
   gem 'factory_girl_rails'

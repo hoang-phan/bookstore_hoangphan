@@ -8,7 +8,11 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
+    begin
+      @book = Book.find(params[:id])
+    rescue
+      @book = Book.friendly.find(params[:id])
+    end
   end
 
   def change_per_page

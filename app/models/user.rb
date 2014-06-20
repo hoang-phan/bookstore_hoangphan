@@ -28,13 +28,4 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"]
-        user.email = data["email"]
-        user.confirmed_at = Time.now
-      end
-    end
-  end
-
 end

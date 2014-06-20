@@ -6,4 +6,8 @@ describe User do
   specify { expect(user.check_login(user.password)).to eq(false) }
   specify { expect(user.check_login("Wrong")).to eq(true) }
 
+  it "should auth with facebook" do
+
+  end
+
 end

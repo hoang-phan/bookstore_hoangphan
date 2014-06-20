@@ -1,0 +1,13 @@
+- provide(:title, "Welcome to my bookstore")
+.adjust-height
+#content
+  .banner.banner-full.jumbotron
+    .wrap
+      h1 We are the largest bookstore.
+      p You are looking for your sweet but rare books from all over the world but you don't have time?
+      p You want a private list of books suggested everyday?
+      - unless user_signed_in?
+        p= link_to "Sign up now", new_user_registration_path, class: "btn btn-large btn-primary"
+      - else
+        h1 Rock with us members
+.adjust-height

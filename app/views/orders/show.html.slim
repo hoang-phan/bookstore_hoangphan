@@ -1,3 +1,4 @@
+- breadcrumb :order, @order1
 - provide(:title, "Order information: #{@order.order_date}")
 h2.title Order Information
 p.guide #{ @order1.order_date } to #{ @order1.shipping_address }
@@ -33,7 +34,6 @@ ul.cart-div
     span.price &#36;#{ (@order1.total_price + delivery).round(1) }
 p.cart-top
   span.cancel= link_to "Back to past orders", orders_path
-.adjust-height
 .adjust-height
 .adjust-height
 

@@ -63,7 +63,7 @@ class Order < ActiveRecord::Base
 
   def credit_card
     @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
-      :type               => card_type,
+      :brand               => card_type,
       :number             => card_number,
       :verification_value => card_verification,
       :month              => 12,
@@ -71,5 +71,10 @@ class Order < ActiveRecord::Base
       :first_name         => first_name,
       :last_name          => last_name
     )
+  end
+
+  def update_with_ip(params, ip)
+    params[:ip_address] = ip
+    update_attributes(params)
   end
 end

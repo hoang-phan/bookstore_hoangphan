@@ -1,10 +1,11 @@
 doctype html
 html
   head
-    title= yield(:title)
+    = metamagic title: yield(:title), description: "Largest bookstore.com", keywords: %w(book, thriller, rich)
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+
   body
     = render "layouts/header"
     .container
@@ -12,5 +13,6 @@ html
         div class=("alert alert-#{key}") = value
       #content1
         .jumbotron
+          = h breadcrumbs
           = yield
       = render "layouts/footer"

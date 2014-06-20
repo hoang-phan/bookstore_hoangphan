@@ -9,8 +9,7 @@ class OrderLinesController < ApplicationController
 
   def update
     order_line = OrderLine.find(params[:id])
-    order_line.update_attributes(quantity: order_line_params[:quantity])
-    order_line.save
+    order_line.update_attributes!(quantity: order_line_params[:quantity])
     redirect_to order_lines_path
   end
 
