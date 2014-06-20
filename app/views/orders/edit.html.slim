@@ -9,14 +9,36 @@ p.guide Fill the information below
       div
         = f.label :shipping_address
         = f.text_field :shipping_address
-      br
       div
         = f.label :order_date
         = f.text_field :order_date
+  .form-div
+    .form-div-title Paying information
+    .form-div-content
+      br
+      div
+        = f.label :first_name
+        = f.text_field :first_name
+      div
+        = f.label :last_name
+        = f.text_field :last_name
+      div
+        = f.label :card_type
+        = f.text_field :card_type
+      div
+        = f.label :card_number
+        = f.text_field :card_number
+      div
+        = f.label :card_expire_month
+        = f.text_field :card_expire_month
+      div
+        = f.label :card_expire_year
+        = f.text_field :card_expire_year
+      div
+        = f.label :card_verification
+        = f.text_field :card_verification
+
   span.cancel= link_to "Cancel", "#"
   = f.submit "Confirm order", class: "buttona"
-p= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), order_path(@order), method: :put)
-
-.adjust-height
-.adjust-height
+p= link_to(image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), "#", id: "paypal-submit")
 

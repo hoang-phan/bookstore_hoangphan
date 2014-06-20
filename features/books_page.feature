@@ -39,6 +39,9 @@ Feature:  In Books page
     And I fill in "Order date" with "xxxxxxxxxxxx"
     And I click button "Confirm order"
     Then I should see content "Checkout"
+    When I fill in "Order date" with "xxxxxxxxxxxx"
+    And I click image link "#cart"
+    Then I should see content "Checkout"
 
   @javascript
   Scenario: Checkout
@@ -52,7 +55,12 @@ Feature:  In Books page
     And I click image link "#cart"
     And I click button "Checkout"
     And I click button "Confirm order"
+    Then I should see content "Fail"
+    When I click image link "#cart"
+    And I click button "Checkout"
+    When I click image link "#paypal-submit"
     Then I should see content "2"
+    Given I am on the orders_success page
     When I am on the orders page
     Then I should see title "Your past orders"
     When I click image link ".order-detail h4 a"

@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  post "books/change_per_page"
+  patch "orders/paypal"
+  get "orders/success"
+  get "orders/failure"
+
   devise_for :users, :controllers => { sessions: "sessions",  :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :books
   resources :orders
@@ -10,8 +15,6 @@ Rails.application.routes.draw do
   resources :comments
   resources :search, only: :index
   resources :charges
-
-  post "books/change_per_page"
 
   root 'static_pages#home'
 

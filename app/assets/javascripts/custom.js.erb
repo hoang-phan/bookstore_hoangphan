@@ -40,4 +40,9 @@ $(function(){
     $(this).parent().submit();
   });
 
+  $("#paypal-submit").click(function(e){
+    e.preventDefault();
+    $(".edit_order").attr("action", "/orders/paypal");
+    $(".edit_order").submit();
+  });
 });

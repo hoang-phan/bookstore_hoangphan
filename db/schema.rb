@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140618055956) do
+ActiveRecord::Schema.define(version: 20140620030336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,12 +120,20 @@ ActiveRecord::Schema.define(version: 20140618055956) do
   add_index "order_lines", ["order_id"], name: "index_order_lines_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.date     "order_date",         default: '2014-06-16'
+    t.date     "order_date",         default: '2014-06-20'
     t.decimal  "order_total_amount"
     t.integer  "user_id"
     t.string   "shipping_address",   default: "unknown"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "card_type"
+    t.string   "card_number"
+    t.string   "card_verification"
+    t.integer  "card_expire_month"
+    t.integer  "card_expire_year"
+    t.string   "ip_address"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
