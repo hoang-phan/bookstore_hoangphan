@@ -51,7 +51,7 @@ group :development, :test do
   gem 'simplecov', '~> 0.7.1', :require => false
   gem 'selenium-webdriver'
   gem 'cucumber-timecop', :require => false
-  gem 'rack-mini-profiler'
+  gem 'rack-mini-profiler', :require => false
   gem 'pry-rails'
 end
 
