@@ -28,7 +28,7 @@ describe OrdersController do
 
   context "show" do
     it "should set @order" do
-      get :show, id: order.id
+      get :show, id: order2.id
     end
   end
 
