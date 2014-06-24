@@ -28,7 +28,8 @@ describe OrdersController do
 
   context "show" do
     it "should set @order" do
-      get :show, id: order2.id
+      get :show, id: order.id
+      response.should be_success
     end
   end
 
@@ -66,19 +67,14 @@ describe OrdersController do
   end
 
   context "paypal" do
-    it "should update @order" do
-      Order.any_instance.stub(:purchase).and_return(true)
+    it "should redirect to paypal" do
       patch :paypal, id: order.id, order: { shipping_address: "Some address" }
-    end
-
-    it "should not update @order" do
-      Order.any_instance.stub(:purchase).and_return(false)
-      patch :paypal, id: order.id, order: { shipping_address: "Some address" }
+      response.should be_redirect
     end
 
     it "should fail if any attribute is invalid" do
       patch :paypal, id: order.id, order: { order_date: "xxxyyyy" }
-      response.should_not redirect_to(orders_failure_path)
+      response.should render_template("edit")
     end
   end
 

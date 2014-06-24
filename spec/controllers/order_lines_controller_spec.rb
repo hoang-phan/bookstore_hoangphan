@@ -12,14 +12,17 @@ describe OrderLinesController do
   end
 
   context "index" do
-    it "should list all line item" do
+    it "should be success" do
       get :index
+      response.should be_success
     end
   end
 
   context "create" do
     it "should create @order_line" do
+      order_lines_count = order.order_lines.count
       xhr :post, :create, order_line: { book_id: book.id }
+      expect( order.order_lines.count - order_lines_count ).to eq(1)
     end
   end
 
@@ -33,6 +36,7 @@ describe OrderLinesController do
   context "delete" do
     it "should delete @order_line" do
       xhr :delete, :destroy, id: order_line.id
+      response.should be_success
     end
   end
 
