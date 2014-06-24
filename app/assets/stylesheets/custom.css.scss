@@ -237,7 +237,7 @@ input#search {
 #categories-menu {
   padding-top: 0;
   border-radius: 0;
-  width: 600px;
+  width: 100%;
   padding-right: 30px;
   li {
     border-right: 1px solid $add_light;
@@ -292,8 +292,9 @@ input#search {
   background: #00a099;
   border: none;
   border-radius: 0;
-  left: 24px;
+  left: 23px;
   top: 60px;
+  width: 100%;
   li {
     padding: 5px 12px 0 12px;
   }

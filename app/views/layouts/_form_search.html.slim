@@ -6,10 +6,11 @@
   #category-search.dropdown-toggle.has_arrow_down data-toggle="dropdown"
     span | all categories
   ul#search-menu.dropdown-menu role="menu"
-    - @categories.each do |category|
-      li
-        span.value= category.name
-        span.hidden= category.id
+    - cache do
+      - @categories.each do |category|
+        li
+          span.value= category.name
+          span.hidden= category.id
     li
       span.value All categories
       span.hidden -1
