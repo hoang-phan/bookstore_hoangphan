@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   post "books/change_per_page"
   patch "orders/paypal"
+  get "orders/success_paypal"
   get "orders/success"
   get "orders/failure"
 
-  devise_for :users, :controllers => { sessions: "sessions",  :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { sessions: "sessions", registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks" }
   resources :books
   resources :orders
   resources :order_lines

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620084815) do
+ActiveRecord::Schema.define(version: 20140623080348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 20140620084815) do
     t.date     "published_date"
     t.decimal  "unit_price"
     t.string   "photo"
-    t.integer  "total_rating_count", default: 0
-    t.integer  "total_rating_value", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -136,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140620084815) do
   add_index "order_lines", ["order_id"], name: "index_order_lines_on_order_id", using: :btree
 
   create_table "orders", force: true do |t|
-    t.date     "order_date",         default: '2014-06-20'
+    t.date     "order_date",         default: '2014-06-23'
     t.decimal  "order_total_amount"
     t.integer  "user_id"
     t.string   "shipping_address",   default: "unknown"
@@ -150,8 +148,10 @@ ActiveRecord::Schema.define(version: 20140620084815) do
     t.integer  "card_expire_month"
     t.integer  "card_expire_year"
     t.string   "ip_address"
+    t.string   "express_token"
   end
 
+  add_index "orders", ["express_token"], name: "index_orders_on_express_token", unique: true, using: :btree
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "pg_search_documents", force: true do |t|

@@ -23,7 +23,8 @@ describe BooksController do
 
   context "change_per_page" do
     it "should post change_per_page @books" do
-      post :change_per_page, per_page: 8
+      post :change_per_page, per_page: 16
+      session[:per_page].should eq("16")
     end
   end
 end

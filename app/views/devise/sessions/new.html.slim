@@ -1,0 +1,27 @@
+- breadcrumb :signin
+- provide(:title, "Sign in")
+h2.title Sign in
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-div
+    p.form-div-title Fill in below fields
+    .form-div-content
+      div
+        = f.label :email
+        = f.email_field :email, autofocus: true
+      div
+        = f.label :password
+        = f.password_field :password, autocomplete: "off"
+      br
+        - if session[:captcha]
+          p#capt-text
+            | You have failed more than #{ENV['MAX_LOGIN_ATTEMPTS']} login attempts
+          = recaptcha_tags
+        - if devise_mapping.rememberable?
+          div
+            = f.check_box :remember_me
+            | &nbsp;
+            = f.label :remember_me
+  div= f.submit "Sign in", class: "btn-sign"
+.other
+  = render "devise/shared/links"
+.adjust-height

@@ -57,7 +57,10 @@ Rails.application.configure do
       signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31AeYBvz2IOq7Jd2QrBjkS-padZcq0"
     }
     ::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal_options)
-    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(paypal_options)
+    ::GATEWAY = ActiveMerchant::Billing::TrustCommerceGateway.new(
+      :login    => 'TestMerchant',
+      :password => 'password'
+    )
   end
 
 end

@@ -75,6 +75,15 @@ a, a:hover, a:visited {
 // header
 // .........
 
+.btn-group {
+  width: 32%;
+  margin-right: 1%;
+}
+
+#cart-render {
+  width: 20%;
+}
+
 .has_arrow_down {
   background: image_url('arrow-down.png') no-repeat;
   background-position: right 10px;
@@ -218,7 +227,7 @@ input#search {
   margin-left: 20px;
   text-align: left;
   background: $dark_header;
-  width: 600px;
+  width: 100%;
   padding: 10px 40px;
   border: none;
   border-radius: 0;
@@ -256,7 +265,7 @@ input#search {
 #cart {
   margin-left: 23px;
   padding: 14px;
-  width: 350px;
+  width: 100%;
   background: $cart;
   border: none;
   border-radius: 0;
@@ -350,13 +359,13 @@ input#search {
 .page-head-title {
   font-size: 17px;
   font-weight: bold;
-  width: 800px;
+  width: 40%;
 }
 
 #choose-per-page {
   font-size: 14px;
   font-weight: normal;
-  width: 450px;
+  width: 30%;
   select {
     padding: 10px;
     border-radius: 0;
@@ -386,7 +395,7 @@ input#search {
   width: 100%;
   display: block;
   li {
-    width: 24%;
+    width: 372px;
     margin-right: 1%;
     height: 500px;
     overflow: hidden;
@@ -561,6 +570,7 @@ input {
   padding: 5px;
   margin: 5px;
   border-radius: 5px;
+  border: 1px solid #c9d0d6;
 }
 
 .hero-unit {
@@ -654,15 +664,13 @@ footer {
 //register
 .jumbotron {
   .title1 {
-    margin-left: 28px;
     color: $cart;
   }
   .guide {
     font-size: 12px;
-    margin-left: 28px;
   }
   .form-div {
-    margin: 25px;
+    margin: 25px 0;
     border: 1px solid lightgray;
     background: #eee;
     width: 760px;
@@ -716,7 +724,7 @@ footer {
   .btn-sign {
     width: 100px;
     height: 50px;
-    margin: 25px;
+    margin: 25px 0;
     background: $cart;
     border: none;
     border-radius: 0;
@@ -725,10 +733,6 @@ footer {
   .no-width-restrict {
     width: auto !important;
     background: linear-gradient(-90deg, #8b9297, #484d51);
-  }
-
-  .other {
-    margin-left: 25px;
   }
 
   .adjust-height {
@@ -746,8 +750,11 @@ footer {
 //order
 
 .cancel {
-  margin: 25px;
-  width: 600px;
+  margin: 25px 0;
+  width: 650px;
+  a, a:visited {
+    color: $cart;
+  }
 }
 
 .visible {
@@ -920,3 +927,59 @@ footer {
 .breadcrumbs {
   margin-top: 20px;
 }
+
+//.............
+//responsive
+
+@media (max-width: 1580px) {
+  #cart-render {
+    width: 500px;
+    margin-left: 125px;
+    margin-top: 2px;
+  }
+  #search-top {
+    margin-top: 7px;
+  }
+  .navbar-search {
+    height: 150px;
+  }
+  .breadcrumbs {
+    margin-top: 120px;
+  }
+  .span6 {
+    width: 400px;
+  }
+  .span2 {
+    width: 800px;
+  }
+  .span7 {
+    width: 400px;
+  }
+}
+
+@media (max-width: 1270px) {
+  .btn-group {
+    width: 500px;
+    margin-left: 128px;
+    margin-top: -7px;
+  }
+  .navbar-search {
+    height: 180px;
+  }
+  .breadcrumbs {
+    margin-top: 150px;
+  }
+  #choose-per-page {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  #search-button {
+    display: none;
+  }
+  .pagination {
+    display: none;
+  }
+}
+

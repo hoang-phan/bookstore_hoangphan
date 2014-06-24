@@ -16,11 +16,12 @@ class Book < ActiveRecord::Base
     "#{title}".parameterize
   end
 
-  def add_rating(rate)
-    rating = Integer(rate)
-    increment(:total_rating_count)
-    increment(:total_rating_value, rating)
-    save!
+  def total_rating_count
+    comments.count
+  end
+
+  def total_rating_value
+    comments.to_a.sum { |item| item[:rating] }
   end
 
 end

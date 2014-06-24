@@ -1,10 +1,22 @@
 require 'spec_helper'
 
 describe Book do
-  before { subject = FactoryGirl.create(:book) }
 
-  specify { expect{ subject.add_rating(4) }.to change(subject, :total_rating_count).by(1) }
+  let(:book) { FactoryGirl.create(:book) }
+  subject { book }
 
-  specify { expect{ subject.add_rating(4) }.to change(subject, :total_rating_value).by(4) }
+  before do
+    comment1 = FactoryGirl.create(:comment, user_id: 1, rating: 2)
+    comment2 = FactoryGirl.create(:comment, user_id: 2, rating: 2)
+    comment3 = FactoryGirl.create(:comment, user_id: 3, rating: 2)
+    book.comments << [comment1, comment2, comment3]
+  end
+
+  context "total rating" do
+    it "should have exact total rating" do
+      expect(subject.total_rating_value).to eq(6)
+      expect(subject.total_rating_count).to eq(3)
+    end
+  end
 
 end

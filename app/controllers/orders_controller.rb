@@ -7,7 +7,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order1 = Order.find(params[:id])
+    begin
+      @order1 = current_user.orders.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to "/404"
+    end
   end
 
   def edit
@@ -18,6 +22,7 @@ class OrdersController < ApplicationController
     if !@order.update_with_ip(order_params, request.remote_ip)
       render 'edit'
     elsif @order.purchase
+      session[:order_id] = current_user.orders.create.id
       redirect_to orders_success_path
     else
       redirect_to orders_failure_path
@@ -41,8 +46,23 @@ class OrdersController < ApplicationController
     end
   end
 
+  def success_paypal
+    details = EXPRESS_GATEWAY.details_for(@order.express_token)
+    response = EXPRESS_GATEWAY.purchase(@order.price_in_cents,{
+      :ip               => request.remote_ip,
+      :currency_code    => 'USD',
+      :token            => @order.express_token,
+      :payer_id         => details.payer_id
+    })
+    if response.success?
+      session[:order_id] = current_user.orders.create.id
+      redirect_to orders_success_path
+    else
+      redirect_to orders_failure_path
+    end
+  end
+
   def success
-    session[:order_id] = current_user.orders.create.id
   end
 
   def failure
@@ -56,14 +76,15 @@ class OrdersController < ApplicationController
     end
 
     def express_checkout(items)
-      response = EXPRESS_GATEWAY.setup_purchase(@order.total_price * 100,
+      response = EXPRESS_GATEWAY.setup_purchase(@order.price_in_cents,
         ip: request.remote_ip,
-        return_url: orders_success_url,
+        return_url: orders_success_paypal_url,
         cancel_return_url: orders_failure_url,
         currency: "USD",
         allow_guest_checkout: true,
         items: items
       )
+      @order.update_attribute(:express_token, response.token)
       EXPRESS_GATEWAY.redirect_url_for(response.token)
     end
 end

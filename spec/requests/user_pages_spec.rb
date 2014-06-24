@@ -14,11 +14,11 @@ describe "UserPages" do
 
       it { should have_title("Sign up") }
 
-      describe "valid sign_up" do
+      describe "valid sign up" do
         before { sign_up non_signed_up_user }
 
         it "should send a mail" do
-          click_button "Sign up"
+          click_button "Register"
           user.send(:send_confirmation_notification?).should eq true
         end
 
@@ -26,7 +26,7 @@ describe "UserPages" do
       describe "invalid sign up" do
 
         describe "blank" do
-          before { click_button "Sign up" }
+          before { click_button "Register" }
           it { should have_content("error") }
         end
 
@@ -34,7 +34,7 @@ describe "UserPages" do
           before do
             non_signed_up_user.email = "aaaaa"
             sign_up non_signed_up_user
-            click_button "Sign up"
+            click_button "Register"
           end
           it { should have_content("error") }
         end
@@ -43,7 +43,7 @@ describe "UserPages" do
           before do
             non_signed_up_user.password = "aaaaa"
             sign_up non_signed_up_user
-            click_button "Sign up"
+            click_button "Register"
           end
           it { should have_content("error") }
         end
@@ -52,7 +52,7 @@ describe "UserPages" do
           before do
             sign_up non_signed_up_user
             fill_in "Password confirmation", with: "Wrongpass"
-            click_button "Sign up"
+            click_button "Register"
           end
           it { should have_content("error") }
         end
@@ -60,7 +60,7 @@ describe "UserPages" do
         describe "duplicate email" do
           before do
             sign_up user
-            click_button "Sign up"
+            click_button "Register"
           end
           it { should have_content("error") }
         end

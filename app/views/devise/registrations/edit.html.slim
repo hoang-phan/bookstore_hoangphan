@@ -1,0 +1,38 @@
+- provide(:title, "Edit #{resource_name.to_s.humanize}")
+h2.title1
+  | Edit #{resource_name.to_s.humanize}
+p.guide Change the fields below
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = devise_error_messages!
+  .form-div
+    p.form-div-title Mandatory fields
+    .form-div-content
+      div
+        = f.label :email
+        = f.email_field :email, autofocus: true
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        div
+          | Currently waiting confirmation for: #{resource.unconfirmed_email}
+      div
+        = f.label :password
+        = f.password_field :password, autocomplete: "off"
+      div
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
+      div
+        = f.label :current_password
+        = f.password_field :current_password, autocomplete: "off"
+      div
+        = f.label :full_name
+        = f.text_field :full_name
+      div
+        = f.label :birthday
+        = f.text_field :birthday
+      div
+        = f.label :phone
+        = f.text_field :phone
+  .buttons= f.submit "Update", class: "btn-sign"
+div
+  = button_to "Unhappy? Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn-sign no-width-restrict"
+.other
+  = link_to "Back", :back

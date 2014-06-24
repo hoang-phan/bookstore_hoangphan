@@ -8,8 +8,6 @@ class CreateBooks < ActiveRecord::Migration
       t.date :published_date
       t.decimal :unit_price
       t.string :photo
-      t.integer :total_rating_count, default: 0
-      t.integer :total_rating_value, default: 0
 
       t.timestamps
     end

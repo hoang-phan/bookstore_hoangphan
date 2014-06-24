@@ -2,7 +2,7 @@ class BooksController < ApplicationController
 
   def index
     session[:per_page] ||= 8
-    @books = Book.order("total_rating_value DESC").page(params[:page]).per(session[:per_page])
+    @books = Book.page(params[:page]).per(session[:per_page])
     @category_title = "All categories"
     @title = "All books"
   end

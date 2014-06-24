@@ -1,0 +1,39 @@
+- breadcrumb :signup
+- provide(:title, "Sign up")
+h2.title Register
+p.guide Fill the register and be part of our community
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  .form-div
+    p.form-div-title Mandatory fields
+    .form-div-content
+      div
+        = f.label :email
+        = f.email_field :email, autofocus: true
+      div
+        = f.label :password
+        = f.password_field :password, autocomplete: "off"
+      div
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
+      br
+      label Captcha
+      br
+      = recaptcha_tags
+  .form-div
+    p.form-div-title Optional fields
+    .form-div-content
+      div
+        = f.label :full_name
+        = f.text_field :full_name
+      div
+        = f.label :birthday
+        = f.date_field :birthday
+      div
+        = f.label :phone
+        = f.text_field :phone
+  div
+    span.cancel= link_to "Cancel", new_user_session_path
+    = f.submit "Register", class: "buttona"
+.other
+  = render "devise/shared/links"

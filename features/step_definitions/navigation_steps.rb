@@ -29,12 +29,34 @@ Given /^I am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^I visit invalid order page$/ do
+  visit "/orders/ridiculousid"
+end
+
 Given /^I visit the book page$/ do
-  visit "books/#{ @book.id }"
+  visit "/books/#{ @book.id }"
+end
+
+Given /^I visit the book page with friendly url$/ do
+  visit "/books/#{ @book.to_param }"
 end
 
 Given /^I visit the category page$/ do
-  visit "categories/#{ @category.id }"
+  visit "/categories/#{ @category.id }"
+end
+
+Given /^Paypal return success$/ do
+  ActiveMerchant::Billing::PaypalExpressResponse.any_instance.stub(:success?).and_return(true)
+  visit "/orders/success_paypal"
+end
+
+Given /^Paypal return failure$/ do
+  ActiveMerchant::Billing::PaypalExpressResponse.any_instance.stub(:success?).and_return(false)
+  visit "/orders/success_paypal"
+end
+
+Given /^credit card is validated$/ do
+  Order.any_instance.stub(:purchase).and_return(true)
 end
 
 Given /^more than (\d+) hours passes$/ do |num|
@@ -95,8 +117,16 @@ When /^I do not verify captcha$/ do
   SessionsController.any_instance.stub(:verify_recaptcha) { false }
 end
 
+When /^I do not verify captcha signup$/ do
+  RegistrationsController.any_instance.stub(:verify_recaptcha) { false }
+end
+
 When /^I verify captcha$/ do
   SessionsController.any_instance.stub(:verify_recaptcha) { true }
+end
+
+When /^I verify captcha signup$/ do
+  RegistrationsController.any_instance.stub(:verify_recaptcha) { true }
 end
 
 When /^I wait for (\d+) seconds?$/ do |n|
@@ -132,6 +162,10 @@ Then /^I should see title "([^\"]*)"$/ do |text|
   page.should have_title(text)
 end
 
+Then /^I should not see title "([^\"]*)"$/ do |text|
+  page.should_not have_title(text)
+end
+
 Then /^I should see link "([^\"]*)"$/ do |text|
   page.should have_link(text)
 end
@@ -144,5 +178,12 @@ Then /^I should receive a confirmation email to "(.*?)"$/ do |email|
   user = User.new(email: email)
   mail = UserMailer.send_activation(user)
   mail.should have_content("Welcome")
+end
+
+When (/^I fill in these fields as:$/) do |table|
+  data = table.raw
+  data.each do |row|
+    fill_in row[0], with: row[1]
+  end
 end
 

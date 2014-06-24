@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 
     begin
       @comment = current_user.comments.create!(book_id: book.id, content: comment_params[:content])
-      book.add_rating(comment_params[:rating])
       flash[:notice] = "Thank you for rating"
     rescue
       flash[:error] = "You cannot comment on this book"

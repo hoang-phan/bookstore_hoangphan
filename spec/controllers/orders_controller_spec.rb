@@ -81,4 +81,17 @@ describe OrdersController do
       response.should_not redirect_to(orders_failure_path)
     end
   end
+
+  context "success paypal" do
+    it "should not be success" do
+      get :success_paypal
+      response.should redirect_to(orders_failure_path)
+    end
+
+    it "should redirect to success path if success" do
+      ActiveMerchant::Billing::PaypalExpressResponse.any_instance.stub(:success?).and_return(true)
+      get :success_paypal
+      response.should redirect_to(orders_success_path)
+    end
+  end
 end
