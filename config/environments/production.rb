@@ -93,7 +93,7 @@ Rails.application.configure do
     :enable_starttls_auto => true  }
 
   config.after_initialize do
-    ActiveMerchant::Billing::Base.mode = :test
+    ActiveMerchant::Billing::Base.mode = :production
     paypal_options = {
       login: "hoangphanbk10-facilitator_api1.gmail.com",
       password: "1403152227",
