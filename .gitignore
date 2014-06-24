@@ -23,3 +23,6 @@
 
 #ignore log
 /log
+
+#ignore vendor bundle
+/vendor/bundle
