@@ -312,14 +312,14 @@ input#search {
     }
   }
   .title {
-    width: 200px;
+    width: 60%;
   }
   .amount {
-    width: 25px;
+    width: 10%;
     text-align: right;
   }
   .price {
-    width: 100px;
+    width: 25%;
     text-align: right;
   }
   .button-group {
@@ -767,7 +767,8 @@ footer {
 }
 
 .adjust-menu {
-  width: 1300px;
+  width: 37%;
+  display: inline-block;
 }
 
 .div-order {
